@@ -31,5 +31,4 @@ if __name__ == "__main__":
     except Exception,ex:
         print 'Exception:\r\n'
         print ex
-    finally:
         os.system("pause")
