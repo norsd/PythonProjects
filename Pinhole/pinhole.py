@@ -13,13 +13,13 @@ class PipeThread(threading.Thread):
     pipes =[]
     pipeslock = threading.Lock()
     def __init__(self,source,sink):
-        Thread.__init__(self)
+        threading.Thread.__init__(self)
         self.source = source
         self.sink = sink
         log('Creating new pipe thread %s (%s->%s)',
             self, source.getpeername(),sink.getpeername())
         self.pipeslock.acquire()
-        try:self.pipeslock.append(self)
+        try:self.pipes.append(self)
         finally:self.pipeslock.release()
         self.pipeslock.acquire()
         try:pipes_now = len(self.pipes)
@@ -43,7 +43,7 @@ class PipeThread(threading.Thread):
         log('%s pipes still active',pipes_left)
 class Pinhole(threading.Thread):
     def __init__(self,port,newhost,newport):
-        super(Pinhole,self).__init__(self)
+        super(Pinhole,self).__init__()
         log('Redirecting:localhost:%s->%s:%s',port,newhost,newport)
         self.newhost = newhost
         self.newport = newport
@@ -71,5 +71,5 @@ if __name__ == '__main__':
         print 'Usage: %s port newhost [newport]' % sys.argv[0]
         sys.exit(1)
     sys.stdout = open('pinhole.log','w')
-    Pinhoe(port,newhost,newport).start()
+    Pinhole(port,newhost,newport).start()
 

@@ -22,7 +22,7 @@ def Compress(a_list,a_threshold,a_begin,a_end):
         (maxI,maxH) = _CalculateMax(vt,b,e)
         if  maxH<=t:#距离小于阈值
             #删除直线上所有点
-            
+
         else:
             #保留该店
             #对该点的前后两段分别调用Compress

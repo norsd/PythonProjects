@@ -26,6 +26,7 @@ class PipeThread(threading.Thread):
         finally:self.pipeslock.release()
         log('%s pipes now active',pipes_now)
     def run(self):
+        print self.Pair
         while True:
             try:
                 data = self.source.recv(1024)
@@ -33,14 +34,30 @@ class PipeThread(threading.Thread):
                 self.sink.send(data)
             except:
                 break
+        self.sink.close()
         log('%s terminating',self)
         self.pipeslock.acquire()
-        try: self.pipes.remove(self)
-        finally:self.pipeslock.release()
+        try:
+            self.pipes.remove(self)
+        finally:
+            self.pipeslock.release()
+        self.__ClosePair()
         self.pipeslock.acquire()
         try:pipes_left = len(self.pipes)
         finally:self.pipeslock.release()
         log('%s pipes still active',pipes_left)
+    def Close(self):
+        self.pipeslock.acquire()
+        try:
+            self.source.close()
+            self.pipes.remove(self)
+        finally:
+            self.pipeslock.release()
+    def __ClosePair(self):
+        print self.Pair
+        #if not self.Pair:
+        self.Pair.Close()
+        self.Pair = None
 class Pinhole(threading.Thread):
     def __init__(self,port,newhost,newport):
         super(Pinhole,self).__init__()
@@ -56,8 +73,12 @@ class Pinhole(threading.Thread):
             log('Creating new session for %s:%s',*address)
             fwd = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
             fwd.connect((self.newhost,self.newport))
-            PipeThread(newsock,fwd).start()
-            PipeThread(fwd,newsock).start()
+            pth0 = PipeThread(newsock,fwd)#.start()
+            pth1 = PipeThread(fwd,newsock)#.start()
+            pth0.Pair = pth1
+            pth1.Pair = pth0
+            pth0.start()
+            pth1.start()
 
 if __name__ == '__main__':
     print 'Starting Pinhole port forwarder/redirector'

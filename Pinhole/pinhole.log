@@ -1,0 +1,12 @@
+Sun Mar 16 17:58:01 2014:Redirecting:localhost:80->172.30.4.193:6500
+Sun Mar 16 17:58:05 2014:Creating new session for 127.0.0.1:59937
+Sun Mar 16 17:58:05 2014:Creating new pipe thread <PipeThread(Thread-2, initial)> (('127.0.0.1', 59937)->('172.30.4.193', 6500))
+Sun Mar 16 17:58:05 2014:1 pipes now active
+Sun Mar 16 17:58:05 2014:Creating new pipe thread <PipeThread(Thread-3, initial)> (('172.30.4.193', 6500)->('127.0.0.1', 59937))
+Sun Mar 16 17:58:05 2014:2 pipes now active
+<PipeThread(Thread-3, initial)>
+<PipeThread(Thread-2, started 3620)>
+Sun Mar 16 17:58:10 2014:<PipeThread(Thread-2, started 3620)> terminating
+<PipeThread(Thread-3, started 14580)>
+Sun Mar 16 17:58:10 2014:0 pipes still active
+Sun Mar 16 21:00:19 2014:<PipeThread(Thread-3, started 14580)> terminating
