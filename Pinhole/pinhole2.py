@@ -26,7 +26,6 @@ class PipeThread(threading.Thread):
         finally:self.pipeslock.release()
         log('%s pipes now active',pipes_now)
     def run(self):
-        print self.Pair
         while True:
             try:
                 data = self.source.recv(1024)
@@ -34,14 +33,14 @@ class PipeThread(threading.Thread):
                 self.sink.send(data)
             except:
                 break
+        log('%s terminating (%s->%s)',self , self.source.getpeername() , self.sink.getpeername())
         self.sink.close()
-        log('%s terminating',self)
+        self.source.close()
         self.pipeslock.acquire()
         try:
             self.pipes.remove(self)
         finally:
             self.pipeslock.release()
-        self.__ClosePair()
         self.pipeslock.acquire()
         try:pipes_left = len(self.pipes)
         finally:self.pipeslock.release()
@@ -59,20 +58,21 @@ class PipeThread(threading.Thread):
         self.Pair.Close()
         self.Pair = None
 class Pinhole(threading.Thread):
-    def __init__(self,port,newhost,newport):
+    def __init__(self,newPort, oriIp, oriPort):
         super(Pinhole,self).__init__()
-        log('Redirecting:localhost:%s->%s:%s',port,newhost,newport)
-        self.newhost = newhost
-        self.newport = newport
+        log('Redirecting:localhost:%s->%s:%s',newPort,oriIp,oriPort)
+        self.__newPort = newPort
+        self.__oriIp = oriIp
+        self.__oriPort = oriPort
         self.sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        self.sock.bind(('',port))
+        self.sock.bind(('',newPort))
         self.sock.listen(5)
     def run(self):
         while True:
             newsock,address = self.sock.accept()
             log('Creating new session for %s:%s',*address)
             fwd = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-            fwd.connect((self.newhost,self.newport))
+            fwd.connect((self.__oriIp,self.__oriPort))
             pth0 = PipeThread(newsock,fwd)#.start()
             pth1 = PipeThread(fwd,newsock)#.start()
             pth0.Pair = pth1
@@ -84,13 +84,17 @@ if __name__ == '__main__':
     print 'Starting Pinhole port forwarder/redirector'
     import sys
     try:
-        port = int(sys.argv[1])
-        newhost = sys.argv[2]
-        try:newport = int(sys.argv[3])
-        except IndexError:newport =port
+        newPort = int(sys.argv[1])
+        oriIp = sys.argv[2]
+        try:oriPort = int(sys.argv[3])
+        except IndexError:oriPort =newPort
     except(ValueError,IndexError):
-        print 'Usage: %s port newhost [newport]' % sys.argv[0]
+        print 'Usage: %s newPort oriIp [oriPort]' % sys.argv[0]
         sys.exit(1)
     sys.stdout = open('pinhole.log','w')
-    Pinhole(port,newhost,newport).start()
+
+    fwd = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    fwd.connect((oriIp,oriPort))
+    fwd.close()
+    Pinhole(newPort,oriIp,oriPort).start()
 
