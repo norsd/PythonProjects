@@ -27,8 +27,8 @@ class PipeThread(threading.Thread):
         self.pipesLock.acquire()
         try:pipes_now = len(self.pipes)
         finally:self.pipesLock.release()
-        log('%s pipes now active',pipes_now)
-
+        log('%s pipes now active', pipes_now)
+        LockerDecorator(self).decorate()
     #Thread.run
     def run(self):
         while True:
@@ -50,30 +50,16 @@ class PipeThread(threading.Thread):
         try:pipes_left = len(self.pipes)
         finally:self.pipesLock.release()
         log('%s pipes still active',pipes_left)
-    #Decorate Function
-    def sync(func):
-        def wrapper(*args, **kv):
-            self = args[0]
-            self.pipesLock.acquire()
-            try:
-                return func(*args,**kv)
-            finally:
-                self.pipesLock.release()
-        return wrapper
 
-
-    @sync
     def Close(self):
         self.source.close()
         self.pipes.remove(self)
-
 
     def __ClosePair(self):
         print self.Pair
         #if not self.Pair:
         self.Pair.Close()
         self.Pair = None
-
 
 
 class Pinhole(threading.Thread):
@@ -98,6 +84,36 @@ class Pinhole(threading.Thread):
             pth1.Pair = pth0
             pth0.start()
             pth1.start()
+
+
+class DecorateClass(object):
+    def decorate(self):
+        for name, fn in self.iter():
+            if not self.filter(name, fn):
+                continue
+            self.operate(name, fn)
+
+
+class LockerDecorator(DecorateClass):
+    def __init__(self, obj, lock= threading.RLock()):
+        self.obj = obj
+        self.lock = lock
+    def iter(self):
+        return [(name, getattr(self.obj, name)) for name in dir(self.obj)]
+    def filter(self, name, fn):
+        if not name.startswith('_') and callable(fn) and name[0].isupper():
+              return True
+        else:
+              return False
+    def operate(self, name, fn):
+        def locker(*args, **kv):
+            self.lock.acquire()
+            try:
+                return fn(*args, **kv)
+            finally:
+                self.lock.release()
+        setattr(self.obj, name, locker)
+
 
 if __name__ == '__main__':
     print 'Starting Pinhole port forwarder/redirector'
