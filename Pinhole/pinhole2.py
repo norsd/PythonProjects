@@ -111,9 +111,5 @@ if __name__ == '__main__':
         print 'Usage: %s newPort oriIp [oriPort]' % sys.argv[0]
         sys.exit(1)
     sys.stdout = open('pinhole.log','w')
-
-    fwd = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    fwd.connect((oriIp,oriPort))
-    fwd.close()
     Pinhole(newPort,oriIp,oriPort).start()
 

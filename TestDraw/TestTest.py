@@ -54,28 +54,29 @@ for data in datasQ:
     if d<1:
         i=i+1
     times.append( UtcToLocal(data["_id"]))
-
 print i
 
 
-a = plt.hist( deltas,bins=40,histtype='stepfilled' )
+#a = plt.hist( deltas,bins=40,histtype='stepfilled' )
 
-plt.figure(1)
-plt.subplot(611).hist( deltas,bins=40,histtype='stepfilled' )
+#plt.figure(1)
+#plt.subplot(611).hist( deltas,bins=40,histtype='stepfilled' )
 
 p1 = plt.subplot(612)
 p1.plot(times,deltas)
 
-deltasFilter = Filter(datas,1.2)
-plt.subplot(613).hist(deltasFilter,bins=40)
-deltasFilter = Filter(datas,1)
-plt.subplot(614).hist(deltasFilter,bins=40)
-deltasFilter = Filter(datas,0.8)
-plt.subplot(615).hist(deltasFilter,bins=40)
-deltasFilter = Filter(datas,0.6)
-plt.subplot(616).hist(deltasFilter,bins=40)
-deltasFilter = Filter(datas,0)
-plt.subplot(616).hist(deltasFilter,bins=40)
+print (times)
+print (deltas)
+#deltasFilter = Filter(datas,1.2)
+#plt.subplot(613).hist(deltasFilter,bins=40)
+#deltasFilter = Filter(datas,1)
+#plt.subplot(614).hist(deltasFilter,bins=40)
+#deltasFilter = Filter(datas,0.8)
+#plt.subplot(615).hist(deltasFilter,bins=40)
+#deltasFilter = Filter(datas,0.6)
+#plt.subplot(616).hist(deltasFilter,bins=40)
+#deltasFilter = Filter(datas,0)
+#plt.subplot(616).hist(deltasFilter,bins=40)
 
 plt.show()
 

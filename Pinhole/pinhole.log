@@ -1,8 +1,10 @@
-Mon Mar 17 19:55:48 2014:Redirecting:localhost:80->172.30.4.193:6500
-Mon Mar 17 19:55:52 2014:Creating new session for 127.0.0.1:51343
-Mon Mar 17 19:55:52 2014:Creating new pipe thread <PipeThread(Thread-2, initial)> (('127.0.0.1', 51343)->('172.30.4.193', 6500))
-Mon Mar 17 19:55:52 2014:1 pipes now active
-Mon Mar 17 19:55:52 2014:Creating new pipe thread <PipeThread(Thread-3, initial)> (('172.30.4.193', 6500)->('127.0.0.1', 51343))
-Mon Mar 17 19:55:52 2014:2 pipes now active
-Mon Mar 17 19:55:57 2014:<PipeThread(Thread-2, started 15012)> terminating (('127.0.0.1', 51343)->('172.30.4.193', 6500))
-Mon Mar 17 19:55:57 2014:1 pipes still active
+Thu Mar 20 11:35:30 2014:Redirecting:localhost:80->172.30.4.193:6500
+Thu Mar 20 11:35:35 2014:Creating new session for 172.30.4.190:61638
+Thu Mar 20 11:35:35 2014:Creating new pipe thread <PipeThread(Thread-2, initial)> (('172.30.4.190', 61638)->('172.30.4.193', 6500))
+Thu Mar 20 11:35:35 2014:1 pipes now active
+Thu Mar 20 11:35:35 2014:Creating new pipe thread <PipeThread(Thread-3, initial)> (('172.30.4.193', 6500)->('172.30.4.190', 61638))
+Thu Mar 20 11:35:35 2014:2 pipes now active
+Thu Mar 20 11:35:41 2014:<PipeThread(Thread-2, started 16520)> terminating
+Thu Mar 20 11:35:41 2014:1 pipes still active
+Thu Mar 20 11:36:02 2014:<PipeThread(Thread-3, started 10852)> terminating
+Thu Mar 20 11:36:02 2014:0 pipes still active
