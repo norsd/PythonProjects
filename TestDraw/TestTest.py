@@ -131,7 +131,6 @@ class Range:
     def Add(self, range1):
         if range1.GetTrend() == self.GetTrend():
             self.e = range1.priceE
-            self.c = range1.priceE
             self.et = range1.timeE
             self.ct = range1.timeE
             return True
