@@ -3,7 +3,6 @@ __author__ = 'di_shen_sh'
 
 import pymongo as mo
 from pymongo import MongoClient
-
 import math
 
 from scipy import stats
@@ -11,15 +10,21 @@ import numpy as np
 import pylab
 import matplotlib.pyplot as plt
 
+
 from WindPy import w
 from datetime import *
 
-def _GetDatas(a_ifname, a_start, a_end , a_max ):
+#获取数据
+#a_ifname形如"IF1401.CFE"
+#a_begin开始时间
+#a_end结束时间
+#a_max表示最多读取a_max个数据
+def _GetDatas(a_ifId, a_begin, a_end , a_max ):
     client = MongoClient('mongodb://localhost:27017/')
-    col = client.Test[a_ifname]
+    col = client.Test[a_ifId]
     if col.count() == 0:
         w.start(waitTime=10)
-        wdatas = w.wsi(a_ifname,"open,close",a_start,a_end)
+        wdatas = w.wsi(a_ifId,"open,close",a_begin,a_end)
         datasOpen = wdatas.Data[0]
         datasClose = wdatas.Data[1]
         docs =[ {'_id':x[0],'open':x[1],'close':x[2] } for x in  zip(wdatas.Times, datasOpen, datasClose) ]
@@ -29,8 +34,6 @@ def _GetDatas(a_ifname, a_start, a_end , a_max ):
     return datasClose[:a_max]
 
 
-strStart = "2014-04-20 9:15:00"
-strEnd = "2014-04-25 15:15:00"
 
 start = "2013-10-22 9:14:00"
 end = "2013-10-30 15:15:00"
@@ -41,7 +44,6 @@ datas0 = _GetDatas(if0,start,end,952)
 datas1 = _GetDatas(if1,start,end,952)
 
 
-
 x = np.array(datas0)
 y = np.array(datas1)
 slope, intercept, r_value, p_value, slope_std_error = stats.linregress(x, y)
@@ -49,35 +51,35 @@ slope, intercept, r_value, p_value, slope_std_error = stats.linregress(x, y)
 print "%s = %s + %s * %s" %(if1, intercept, slope , if0)
 
 
-lna = [ math.log(x[1]/x[0]) for x in zip(datas0,datas0[1:]) ]
-#lna = [ abs(x[1]-x[0]) for x in zip(data0,data0[1:])]
-#lna.sort()
 
+#对数收益率
+lna = [ math.log(x[1]/x[0]) for x in zip(datas0,datas0[1:]) ]
 
 mu_if0 = sum(lna)/len(lna)
 ex = mu_if0
 sigma_if0 = (sum( [ (ex-x)**2 for x in lna ] )/len(lna))**0.5
-print mu_if0,sigma_if0
+print "mu: %s   sigma: %s" % ( mu_if0,sigma_if0 )
 
-h = lna
-h.sort()
-print "np %s %s" % (np.mean(h) , np.std(h))
+
+
+#print "numpy mu:%s sigma:%s" % (np.mean(h) , np.std(h))
 
 #Correct mu,sigma
 muC = mu_if0*270
 sigmaC =  (sigma_if0**2*270*245)**0.5
-
-print "%s , %s" %( muC , sigmaC)
+print "Correct: mu: %s  sigma:  %s" %( muC , sigmaC)
 
 #sigmaEpsilon
 a = intercept
 b = slope
 deltasEpsilon = [ x[1] - a - b*x[0]  for x in zip(datas0,datas1)]
-ds = deltasEpsilon[:].sort()
+ds = deltasEpsilon[:]
+ds.sort()
 sigmaEpsilon = np.std(ds)
+print "sigmaEpsilong: %s" , sigmaEpsilon
 
-
-
+h = lna[:]
+h.sort()
 fit = stats.norm.pdf(h, np.mean(h), np.std(h))  #this is a fitting indeed
 plt.plot(h,fit,'-o')
 
