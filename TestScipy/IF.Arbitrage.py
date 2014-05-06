@@ -43,6 +43,10 @@ if1 = "IF1312.CFE"
 datas0 = _GetDatas(if0,start,end,952)
 datas1 = _GetDatas(if1,start,end,952)
 
+datas00 = _GetDatas(if0,start,end,952*2)[952:]
+datas11 = _GetDatas(if1,start,end,952*2)[952:]
+
+
 
 x = np.array(datas0)
 y = np.array(datas1)
@@ -77,6 +81,29 @@ ds = deltasEpsilon[:]
 ds.sort()
 sigmaEpsilon = np.std(ds)
 print "sigmaEpsilong: %s" , sigmaEpsilon
+
+def _CalcD1( f , c , l , beta , miu , sigma , t ):
+    ss = sigma**2
+    p1 = math.log(1+( c-l )/((1-beta)*f))
+    p2 = (miu - ss/2)*t
+    p3 = sigma*(t**0.5)
+    return (p1-p2)/p3
+
+Ls = (0,0.2,0.4,0.6,0.8,1.0,1.2,1.3)
+C=0.4
+deltaT = 5/float(245)
+L = 0
+beta = b
+mu = muC
+sigma = sigmaC
+
+beta = 1.006659
+mu = -0.009989931
+sigma = 0.169528455
+d1s = [ _CalcD1(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
+print deltaT
+print d1s
+
 
 h = lna[:]
 h.sort()
