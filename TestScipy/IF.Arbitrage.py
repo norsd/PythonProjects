@@ -89,20 +89,27 @@ def _CalcD1( f , c , l , beta , miu , sigma , t ):
     p3 = sigma*(t**0.5)
     return (p1-p2)/p3
 
+def _CalcD2( epl , l , sigmaEpl ):
+    return (epl - L)/float(sigmaEpl)
+
 Ls = (0,0.2,0.4,0.6,0.8,1.0,1.2,1.3)
 C=0.4
 deltaT = 5/float(245)
 L = 0
+alpha = a
 beta = b
 mu = muC
 sigma = sigmaC
 
+alpha = -14.92827
 beta = 1.006659
 mu = -0.009989931
 sigma = 0.169528455
 d1s = [ _CalcD1(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
-print deltaT
+sigmaEpsilon = 0.488194524
 print d1s
+d2s = [ _CalcD2( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in zip(datas00,datas11) ]
+print d2s
 
 
 h = lna[:]
