@@ -6,6 +6,7 @@ from pymongo import MongoClient
 import math
 
 from scipy import stats
+from scipy.stats import norm
 import numpy as np
 import pylab
 import matplotlib.pyplot as plt
@@ -32,7 +33,6 @@ def _GetDatas(a_ifId, a_begin, a_end , a_max ):
     else:
         datasClose = [ x[u'close'] for x in col.find()]
     return datasClose[:a_max]
-
 
 
 start = "2013-10-22 9:14:00"
@@ -110,6 +110,8 @@ sigmaEpsilon = 0.488194524
 print d1s
 d2s = [ _CalcD2( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in zip(datas00,datas11) ]
 print d2s
+
+print norm.cdf(d2s)
 
 
 h = lna[:]
