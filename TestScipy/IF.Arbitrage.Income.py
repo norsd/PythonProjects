@@ -44,6 +44,7 @@ class Account:
         self.__dtLPos = {}
         self.__dtSPos = {}
         self.__dtOrder = {}
+        self.__margin = 0.0
     def AddContractInfo(self, a_name, a_multiplier, a_margin):
         self.__dtVariety[a_name] = (a_name, a_multiplier, a_margin)
         return
@@ -52,18 +53,42 @@ class Account:
             return False #不合逻辑的开仓
         if not self.__dtVariety.has_key(a_name):
             return False #没有这个Variety信息
+        vi = self.__dtVariety[a_name]
+        c = abs(a_count)
+        require = c*a_price*vi[1]*vi[2]
+        if self.__cash < require:
+            return False #可用资金不足
+        self.__cash -= require
         if a_count > 0:
-            c = a_count
             pos = self.__dtLPos.get(a_name, [0,0])
             pos[0] = (pos[0]*pos[1] + a_price*c) / float(pos[1] + c) #仓位均价
             pos[1] = pos[1] + c #仓位数
+            self.__dtLPos[a_name] = pos
         else:
-            c = -a_count
             pos = self.__dtSPos.get(a_name, [0,0])
             pos[0] = (pos[0]*pos[1] + a_price*c) / float(pos[1] + c) #仓位均价
             pos[1] = pos[1] + c #仓位数
+            self.__dtSPos[a_name] = pos
         return
-
+    def Close(self, a_name, a_price, a_count):
+        if a_count == 0:
+            return False #不合逻辑的平仓
+        if not self.__dtVariety.has_key(a_name):
+            return False #没有这个Variety信息
+        vi = self.__dtVariety[a_name]
+        if a_count > 0:
+            c = a_count
+            if not self.__dtLPos.has_key(a_name):
+                return False #没有持仓信息
+            pos = self.__dtLPos[a_name]
+            pos[1] = pos[1] - c #仓位数
+            self.__cash += pos[0]*c*vi[1]*vi[2] + (a_price-pos[0])*c*vi[1]
+        else:
+            c = -a_count
+            pos = self.__dtSPos.get(a_name, [0,0])
+            pos[1] = pos[1] - c #仓位数
+            self.__cash += pos[0]*c*vi[1]*vi[2] + (pos[0]-a_price)*c*vi[1]
+        return
 
 start = "2013-10-22 9:14:00"
 end = "2013-10-30 15:15:00"
