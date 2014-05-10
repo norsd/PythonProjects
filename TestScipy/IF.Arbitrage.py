@@ -92,6 +92,17 @@ def _CalcD1( f , c , l , beta , miu , sigma , t ):
 def _CalcD2( epl , l , sigmaEpl ):
     return (epl - L)/float(sigmaEpl)
 
+def _CalcD1t( f , c , l , beta , miu , sigma , t ):
+    ss = sigma**2
+    p1 = 1+( l-c )/((1-beta)*f)
+    p2 = (miu - ss/2)*t
+    p3 = sigma*(t**0.5)
+    return math.log(p1-p2)/p3
+def _CalcD2t( epl , l , sigmaEpl ):
+    return (epl + L)/float(sigmaEpl)#difference with _CalcD2
+
+
+
 Ls = (0,0.2,0.4,0.6,0.8,1.0,1.2,1.3)
 C=0.4
 deltaT = 5/float(245)
@@ -105,10 +116,10 @@ alpha = -14.92827
 beta = 1.006659
 mu = -0.009989931
 sigma = 0.169528455
-d1s = [ _CalcD1(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
+d1s = [ _CalcD1t(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
 sigmaEpsilon = 0.488194524
 print d1s
-d2s = [ _CalcD2( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in zip(datas00,datas11) ]
+d2s = [ _CalcD2t( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in zip(datas00,datas11) ]
 print d2s
 
 print norm.cdf(d2s)
