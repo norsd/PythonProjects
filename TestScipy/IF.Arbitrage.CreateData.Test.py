@@ -44,7 +44,7 @@ for j in range(0, len(datassBull[0])):
     ranks.append(ok)
     rankIndex.append(row.index(ok))
 
-bull = [ rank for i,rank in enumerate(ranks) if rank>=0.7 ]
+bull = [ rank for i,rank in enumerate(ranks) if rank>=0.77 ]
 print u'牛市:p>=0.7 , count:%s , ps:%s' %( len(bull), bull)
 
 

@@ -168,6 +168,11 @@ end = "2013-10-30 15:15:00"
 if0 = "IF1311.CFE"
 if1 = "IF1312.CFE"
 
+start = "2014-05-03 9:14:00"
+end = "2014-05-12 15:15:00"
+if0 = "IF1405.CFE"
+if1 = "IF1406.CFE"
+
 datas00 = _GetDatas(if0,start,end,952*2)[952:]
 datas11 = _GetDatas(if1,start,end,952*2)[952:]
 

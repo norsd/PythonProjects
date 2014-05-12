@@ -16,6 +16,7 @@ pred_error = y - predict_y
 degrees_of_freedom = len(x) - 2
 residual_std_error = np.sqrt(np.sum(pred_error**2) / degrees_of_freedom)
 
+
 # Plotting
 pylab.plot(x, y, 'o')
 pylab.plot(x, predict_y, 'k-')

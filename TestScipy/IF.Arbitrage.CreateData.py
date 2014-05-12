@@ -55,6 +55,11 @@ end = "2013-10-30 15:15:00"
 if0 = "IF1311.CFE"
 if1 = "IF1312.CFE"
 
+start = "2014-05-03 9:14:00"
+end = "2014-05-12 15:15:00"
+if0 = "IF1405.CFE"
+if1 = "IF1406.CFE"
+
 datas0 = _GetDatas(if0,start,end,952)
 datas1 = _GetDatas(if1,start,end,952)
 
@@ -99,6 +104,13 @@ beta = 1.006659
 mu = -0.009989931
 sigma = 0.169528455
 sigmaEpsilon = 0.488194524
+
+alpha = 12.4828837144
+beta = 0.988709825626
+sigmaEpsilon = 0.664078755299
+mu = 0.00176416816363
+sigma = 0.155309122851
+
 
 for L in Ls:
     d1s = [ _CalcD1(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
