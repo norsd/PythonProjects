@@ -18,9 +18,8 @@ from datetime import *
 from itertools import izip
 
 
-def _GetDNs( a_L , a_tilde = False ):
-    collection = "L_%s" % (a_L)
-    if a_tilde:collection = "L_%s_tilde" % a_L
+def _GetDNs( a_L , a_bear = False ):
+    collection = "L_%s_%s" % (a_L ,  (a_bear and ['bear'] or ['bull'])[0] )
     client = MongoClient('mongodb://localhost:27017/')
     col = client.Test[collection]
     n1 = [ x[u'N1'] for x in col.find()]
@@ -44,7 +43,7 @@ for j in range(0, len(datassBull[0])):
     ranks.append(ok)
     rankIndex.append(row.index(ok))
 
-bull = [ rank for i,rank in enumerate(ranks) if rank>=0.77 ]
+bull = [ rank for i,rank in enumerate(ranks) if rank>=0.7 ]
 print u'牛市:p>=0.7 , count:%s , ps:%s' %( len(bull), bull)
 
 
