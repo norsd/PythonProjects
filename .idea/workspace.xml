@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d10b0f5-84dd-4f80-8424-055f99bdf1c3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestScipy/Tools.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestScipy/__init__.py" />
-      <change type="DELETED" beforePath="E:\PythonProjects\TestScipy\IF.Arbitrage.CalculateParameters.py" afterPath="" />
-      <change type="DELETED" beforePath="E:\PythonProjects\TestScipy\IF.Arbitrage.CreateData.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonProjects.iml" afterPath="$PROJECT_DIR$/.idea/PythonProjects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PythonProjects.iws" />
@@ -38,7 +31,7 @@
       <file leaf-file-name="IF.Arbitrage.Income.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="0" selection-start="4291" selection-end="4291" vertical-scroll-proportion="0.14075287" vertical-offset="662" max-vertical-offset="1386">
+            <state line="118" column="9" selection-start="4137" selection-end="4137" vertical-scroll-proportion="0.36124796" vertical-offset="396" max-vertical-offset="1386">
               <folding>
                 <element signature="e#42#68#0" expanded="true" />
                 <element signature="e#119#205#0" expanded="false" />
@@ -49,13 +42,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TestGrid.Liqi.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="7" selection-start="1341" selection-end="1341" vertical-scroll-proportion="0.0" vertical-offset="654" max-vertical-offset="1364">
+              <folding>
+                <element signature="e#41#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Tools.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestScipy/Tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="0" selection-start="5070" selection-end="5070" vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="1694">
+            <state line="41" column="0" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="2222">
               <folding>
                 <element signature="e#51#71#0" expanded="true" />
-                <element signature="e#435#1404#0" expanded="false" />
                 <element signature="e#1496#2086#0" expanded="false" />
                 <element signature="e#2128#2387#0" expanded="false" />
                 <element signature="e#2450#2575#0" expanded="false" />
@@ -64,7 +67,17 @@
                 <element signature="e#2968#3118#0" expanded="false" />
                 <element signature="e#3162#3222#0" expanded="false" />
                 <element signature="e#3247#3944#0" expanded="false" />
+                <marker date="1400043949670" expanded="true" signature="3973:4379" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/pymongo/collection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="937" column="0" selection-start="40695" selection-end="40695" vertical-scroll-proportion="0.0" vertical-offset="20132" max-vertical-offset="36828">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,8 +85,10 @@
       <file leaf-file-name="IF.Arbitrage.CreateData.Test.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="26" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1210">
-              <folding />
+            <state line="23" column="26" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="1232">
+              <folding>
+                <element signature="e#109#135#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,7 +96,7 @@
       <file leaf-file-name="IF.Arbitrage.0.CalculateParameters.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="1914">
+            <state line="21" column="18" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2002">
               <folding>
                 <element signature="e#51#82#0" expanded="true" />
               </folding>
@@ -92,7 +107,7 @@
       <file leaf-file-name="IF.Arbitrage.1.CalculateD1D2.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="1474">
+            <state line="27" column="19" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="1474">
               <folding>
                 <element signature="e#87#113#0" expanded="true" />
               </folding>
@@ -125,6 +140,8 @@
         <option value="$PROJECT_DIR$/TestScipy/Tools.py" />
         <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CalculateParameters.py" />
         <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py" />
+        <option value="$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py" />
+        <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
         <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" />
         <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py" />
       </list>
@@ -209,20 +226,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestDraw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -243,42 +246,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.IF.Arbitrage.Income">
-    <configuration default="false" name="IF.Arbitrage.CreateData (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestScipy" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonProjects" />
-      <option name="SCRIPT_NAME" value="E:\PythonProjects\TestScipy\IF.Arbitrage.1.CalculateD1D2.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="IF.Arbitrage.CalculateParameters" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestScipy" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonProjects" />
-      <option name="SCRIPT_NAME" value="E:\PythonProjects\TestScipy\IF.Arbitrage.0.CalculateParameters.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="IF.Arbitrage.CreateData.Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -328,6 +295,44 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PythonProjects" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="IF.Arbitrage.0.CalculateParameters" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestScipy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonProjects" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestGrid.Liqi" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestDraw" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonProjects" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -455,19 +460,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CalculateParameters" />
-      <item index="2" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData.Test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.IF.Arbitrage.Income" />
-      <item index="4" class="java.lang.String" itemvalue="Python.IF.Arbitrage.1.CalculateD1D2" />
+      <item index="0" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData.Test" />
+      <item index="1" class="java.lang.String" itemvalue="Python.IF.Arbitrage.Income" />
+      <item index="2" class="java.lang.String" itemvalue="Python.IF.Arbitrage.1.CalculateD1D2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.IF.Arbitrage.0.CalculateParameters" />
+      <item index="4" class="java.lang.String" itemvalue="Python.TestGrid.Liqi" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.IF.Arbitrage.Income" />
-        <item index="1" class="java.lang.String" itemvalue="Python.IF.Arbitrage.1.CalculateD1D2" />
-        <item index="2" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData.Test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CalculateParameters" />
+        <item index="1" class="java.lang.String" itemvalue="Python.IF.Arbitrage.CreateData.Test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.IF.Arbitrage.1.CalculateD1D2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.IF.Arbitrage.0.CalculateParameters" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TestGrid.Liqi" />
       </list>
     </recent_temporary>
   </component>
@@ -523,28 +528,32 @@
       <created>1399904387403</created>
       <updated>1399904387403</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="aaaa">
+      <created>1400044354965</created>
+      <updated>1400044354965</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21327014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39823875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39803922" sideWeight="0.76724595" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36399218" sideWeight="0.22274882" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36399218" sideWeight="0.7772512" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3647059" sideWeight="0.22274882" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3647059" sideWeight="0.7772512" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32681018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -567,20 +576,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TestScipy/Tools.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TestDraw/draw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="10" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestDraw/other.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="23" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="1430" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestDraw/TestDraw.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="550" />
@@ -826,12 +832,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/pymongo/collection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="937" column="0" selection-start="40695" selection-end="40695" vertical-scroll-proportion="0.0" vertical-offset="20132" max-vertical-offset="36828">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/Tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="0" selection-start="5070" selection-end="5070" vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="1694">
+        <state line="41" column="0" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="2222">
           <folding>
             <element signature="e#51#71#0" expanded="true" />
-            <element signature="e#435#1404#0" expanded="false" />
             <element signature="e#1496#2086#0" expanded="false" />
             <element signature="e#2128#2387#0" expanded="false" />
             <element signature="e#2450#2575#0" expanded="false" />
@@ -840,13 +852,23 @@
             <element signature="e#2968#3118#0" expanded="false" />
             <element signature="e#3162#3222#0" expanded="false" />
             <element signature="e#3247#3944#0" expanded="false" />
+            <marker date="1400043949670" expanded="true" signature="3973:4379" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="7" selection-start="1341" selection-end="1341" vertical-scroll-proportion="0.0" vertical-offset="654" max-vertical-offset="1364">
+          <folding>
+            <element signature="e#41#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="1914">
+        <state line="21" column="18" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2002">
           <folding>
             <element signature="e#51#82#0" expanded="true" />
           </folding>
@@ -855,7 +877,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="1474">
+        <state line="27" column="19" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="1474">
           <folding>
             <element signature="e#87#113#0" expanded="true" />
           </folding>
@@ -864,14 +886,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1210">
-          <folding />
+        <state line="23" column="26" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="1232">
+          <folding>
+            <element signature="e#109#135#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="4291" selection-end="4291" vertical-scroll-proportion="0.14075287" vertical-offset="662" max-vertical-offset="1386">
+        <state line="118" column="9" selection-start="4137" selection-end="4137" vertical-scroll-proportion="0.36124796" vertical-offset="396" max-vertical-offset="1386">
           <folding>
             <element signature="e#42#68#0" expanded="true" />
             <element signature="e#119#205#0" expanded="false" />

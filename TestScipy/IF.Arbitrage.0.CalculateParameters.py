@@ -16,10 +16,14 @@ import Tools
 #if0 = "IF1311.CFE"
 #if1 = "IF1312.CFE"
 
-start = "2014-05-03 9:14:00"
-end = "2014-05-12 15:15:00"
+start = "2014-05-03 9:00:00"
+end = "2014-05-12 15:00:00"
 if0 = "IF1405.CFE"
 if1 = "IF1406.CFE"
+multiplier0 = 300
+margin0 = 0.15
+multiplier1 = 300
+margin1 = 0.15
 
 datas0 = Tools.GetDatas(if0,start,end,952)
 datas1 = Tools.GetDatas(if1,start,end,952)
@@ -49,7 +53,7 @@ deltasEpsilon = [ x[1] - a - b*x[0]  for x in zip(datas0,datas1)]
 ds = deltasEpsilon[:]
 sigmaEpsilon = stats.tstd(ds)   #Calculate "Sample Variance"! do not use np.std(ds) or np.var(ds)
 
-Tools.WriteCurrentParameters(start, end, if0, 300, 0.15, if1, 300, 0.15, a, b, sigmaEpsilon, muC, sigmaC)
+Tools.WriteCurrentParameters(start, end, if0, multiplier0, margin0, if1, multiplier1, margin1, a, b, sigmaEpsilon, muC, sigmaC)
 
 # Calculate some additional outputs
 # Plotting

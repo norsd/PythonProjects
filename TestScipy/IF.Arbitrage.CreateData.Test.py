@@ -16,6 +16,7 @@ datassBull = []
 
 ranks = []
 rankIndex = []
+prTest = 0.7
 for l in Ls:
     n1s, n2s = Tools.GetDNs(l, False)
     datassBull.append([n1*n2 for n1, n2 in izip(n1s, n2s)])
@@ -26,8 +27,8 @@ for j in range(0, len(datassBull[0])):
     ranks.append(ok)
     rankIndex.append(row.index(ok))
 
-bull = [ rank for i,rank in enumerate(ranks) if rank>=0.7 ]
-print u'牛市:p>=0.7 , count:%s , ps:%s' %( len(bull), bull)
+bull = [ rank for i,rank in enumerate(ranks) if rank>=prTest ]
+print u'牛市:p>=%s , count:%s , ps:%s' %(prTest, len(bull), bull)
 
 
 ranks = []
@@ -42,8 +43,8 @@ for j in range(0, len(datassBear[0])):
     ranks.append(ok)
     rankIndex.append(row.index(ok))
 
-bear = [ rank for i,rank in enumerate(ranks) if rank>=0.7 ]
+bear = [ rank for i,rank in enumerate(ranks) if rank>=prTest ]
 
-print u'熊市:p>=0.7 , count:%s , ps:%s' %( len(bear), bear)
+print u'熊市:p>=%s , count:%s , ps:%s' %(prTest, len(bear), bear)
 
 
