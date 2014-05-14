@@ -2,6 +2,9 @@
 __author__ = 'di_shen_sh'
 
 from itertools import izip
+import matplotlib.pyplot as plt
+import numpy as np
+import pylab
 import Tools
 
 
@@ -19,50 +22,56 @@ class Account:
         self.__cash = a_cash
         self.__dtVariety = {}
         self.__dtPrice = {} #记录Variety的当前价格
+        self.__dtTime = {} #记录Variety的当前时间
         self.__dtLPos = {}
         self.__dtSPos = {}
-        self.__dtOrder = {}
+        self.__vtDeals = []
         self.__margin = 0.0
 
     def AddContractInfo(self, a_name, a_multiplier, a_margin):
         self.__dtVariety[a_name] = (a_name, a_multiplier, a_margin)
         return
 
-    def SetContractPrice(self, a_name, a_price):
+    def SetContractPrice(self, a_name, a_price, a_time):
         self.__dtPrice[a_name] = a_price
+        self.__dtTime[a_name] = a_time
 
-    def Open(self, a_name, a_price, a_count ):
+    def Open(self, a_name , a_count ):
         if a_count == 0:
             return False #不合逻辑的开仓
         if not self.__dtVariety.has_key(a_name):
             return False #没有这个Variety信息
         vi = self.__dtVariety[a_name]
-        self.__dtPrice[a_name] = a_price
+        price = self.__dtPrice[a_name]
+        time = self.__dtTime[a_name]
         c = abs(a_count)
-        require = c*a_price*vi[1]*vi[2]
+        require = c*price*vi[1]*vi[2]
         if self.__cash < require:
-            print u"Account: Oepn(%s,%s,%s) 可用资金不足 所需资金:%s 可用资金:%s" % (a_name,a_price,a_count,require,self.__cash)
+            print u"Account: Oepn(%s,%s,%s) 可用资金不足 所需资金:%s 可用资金:%s" % (a_name,price,a_count,require,self.__cash)
             return False #可用资金不足
         self.__cash -= require
         if a_count > 0:
             pos = self.__dtLPos.get(a_name, [0,0])
-            pos[0] = (pos[0]*pos[1] + a_price*c) / float(pos[1] + c) #仓位均价
+            pos[0] = (pos[0]*pos[1] + price*c) / float(pos[1] + c) #仓位均价
             pos[1] = pos[1] + c #仓位数
             self.__dtLPos[a_name] = pos
+            self.__vtDeals.append( {'Id':a_name,'Open':1,'Long':1,'Count':c,'Price':price,'Time':time} )
         else:
             pos = self.__dtSPos.get(a_name, [0,0])
-            pos[0] = (pos[0]*pos[1] + a_price*c) / float(pos[1] + c) #仓位均价
+            pos[0] = (pos[0]*pos[1] + price*c) / float(pos[1] + c) #仓位均价
             pos[1] = pos[1] + c #仓位数
             self.__dtSPos[a_name] = pos
+            self.__vtDeals.append( {'Id':a_name,'Open':1,'Long':0,'Count':c,'Price':price,'Time':time} )
         return
 
-    def Close(self, a_name, a_price, a_count):
+    def Close(self, a_name, a_count):
         if a_count == 0:
             return False #不合逻辑的平仓
         if not self.__dtVariety.has_key(a_name):
             return False #没有这个Variety信息
         vi = self.__dtVariety[a_name]
-        self.__dtPrice[a_name] = a_price
+        price = self.__dtPrice[a_name]
+        time = self.__dtTime[a_name]
         c = abs(a_count)
         if a_count > 0:
             if not self.__dtLPos.has_key(a_name):
@@ -71,7 +80,8 @@ class Account:
                 return False #没有足够的持仓可供Close
             pos = self.__dtLPos[a_name]
             pos[1] = pos[1] - c #仓位数
-            self.__cash += pos[0]*c*vi[1]*vi[2] + (a_price-pos[0])*c*vi[1]
+            self.__cash += pos[0]*c*vi[1]*vi[2] + (price-pos[0])*c*vi[1]
+            self.__vtDeals.append( {'Id':a_name,'Open':0,'Long':1,'Count':c,'Price':price,'Time':time} )
         else:
             if not self.__dtSPos.has_key(a_name):
                 return False #没有持仓信息
@@ -79,9 +89,10 @@ class Account:
                 return False #没有足够的Short持仓可供Close
             pos = self.__dtSPos[a_name]
             pos[1] = pos[1] - c #仓位数
-            self.__cash += pos[0]*c*vi[1]*vi[2] + (pos[0]-a_price)*c*vi[1]
+            self.__cash += pos[0]*c*vi[1]*vi[2] + (pos[0]-price)*c*vi[1]
+            self.__vtDeals.append( {'Id':a_name,'Open':0,'Long':0,'Count':c,'Price':price,'Time':time} )
         return
-
+    #获取动态权益
     def GetValue(self):
         value = self.__cash
         for name, posInfo in self.__dtLPos.iteritems():
@@ -101,6 +112,9 @@ class Account:
             posCount = posInfo[1]
             value += posPrice*posCount*multiplier*margin + (posPrice-curPrice)*posCount*multiplier
         return value
+
+    def GetDeals(self):
+        return self.__vtDeals[:]
 
 paras = Tools.GetCurrentParameters()
 start = paras["start"]
@@ -128,20 +142,60 @@ for i,ifps in enumerate(izip(datas00,datas11)):
     p1 = ifps[1]
     bullL = _GetPr(i, True)
     bearL = _GetPr(i, False)
+    acc.SetContractPrice(if0, p0, i)
+    acc.SetContractPrice(if1, p1, i)
+
     if bullL > openTrd:#开始牛市套利
-        acc.Open(if0, p0,  1)
-        acc.Open(if1, p1, -1)
+        acc.Open(if0, 1)
+        acc.Open(if1, -1)
     if bearL > closeTrd:#停止牛市套利
-        acc.Close(if0, p0, 1)
-        acc.Close(if1, p1, -1)
+        acc.Close(if0, 1)
+        acc.Close(if1, -1)
     if bearL > openTrd:#开始熊市套利
-        acc.Open(if0, p0, -1)
-        acc.Open(if1, p1,  1)
+        acc.Open(if0, -1)
+        acc.Open(if1,  1)
     if bullL > closeTrd: #停止熊市套利
-        acc.Close(if0, p0, -1)
-        acc.Close(if1, p1, 1)
-    acc.SetContractPrice(if0, p0)
-    acc.SetContractPrice(if1, p1)
+        acc.Close(if0, -1)
+        acc.Close(if1,  1)
+
 
 print acc.GetValue()
+
+
+x = np.array( [ i1-i0 for i0,i1 in izip(datas00,datas11)])
+pylab.plot(x, 'b-')
+
+bullOpenX = []
+bullOpenY = []
+bullCloseX = []
+bullCloseY = []
+
+bearOpenX = []
+bearOpenY = []
+bearCloseX = []
+bearCloseY = []
+
+for d in  acc.GetDeals():
+    if d["Id"] == if0:
+        time = d["Time"]
+        y = x[time]
+        if d["Open"]  and d["Long"]:
+            bullOpenX.append( time )
+            bullOpenY.append( y )
+        elif not d["Open"] and d["Long"]:
+            bullCloseX.append( time )
+            bullCloseY.append( y )
+        elif d["Open"] and not d["Long"]:
+            bearOpenX.append( time )
+            bearOpenY.append( y )
+        elif not d["Open"] and not d["Long"]:
+            bearCloseX.append( time )
+            bearCloseY.append( y )
+
+pylab.plot(bullOpenX, bullOpenY, 's' )
+pylab.plot(bullCloseX, bullCloseY, 's' , mfc='none')
+
+pylab.plot(bearOpenX, bearOpenY, 'o')
+pylab.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
+pylab.show()
 
