@@ -10,20 +10,38 @@ import numpy as np
 import pylab
 import Tools
 
+key1 = "RU"
+key2 = 1
 
-#start = "2013-10-22 9:14:00"
-#end = "2013-10-30 15:15:00"
-#if0 = "IF1311.CFE"
-#if1 = "IF1312.CFE"
+if key1 == "IF":
+    if key2 == 0:
+        start = "2013-10-22 9:14:00"
+        end = "2013-10-30 15:15:00"
+        if0 = "IF1311.CFE"
+        if1 = "IF1312.CFE"
+    elif key2 ==1:
+        start = "2014-05-03 9:00:00"
+        end = "2014-05-12 15:00:00"
+        if0 = "IF1405.CFE"
+        if1 = "IF1406.CFE"
+    multiplier0 = 300
+    margin0 = 0.15
+    multiplier1 = 300
+    margin1 = 0.15
+elif key1 == "RU":
+    if key2 == 0:
+        start = "2014-05-03 9:00:00"
+        end = "2014-05-12 15:00:00"
+    elif key2 ==1:
+        start = "2014-04-03 9:00:00"
+        end = "2014-04-12 15:00:00"
+    if0 = "RU1409.SHF"
+    if1 = "RU1501.SHF"
+    multiplier0 = 10
+    margin0 = 0.15
+    multiplier1 = 10
+    margin1 = 0.15
 
-start = "2014-05-03 9:00:00"
-end = "2014-05-12 15:00:00"
-if0 = "IF1405.CFE"
-if1 = "IF1406.CFE"
-multiplier0 = 300
-margin0 = 0.15
-multiplier1 = 300
-margin1 = 0.15
 
 datas0 = Tools.GetDatas(if0,start,end,952)
 datas1 = Tools.GetDatas(if1,start,end,952)

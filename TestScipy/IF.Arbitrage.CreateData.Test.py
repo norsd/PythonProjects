@@ -16,7 +16,7 @@ datassBull = []
 
 ranks = []
 rankIndex = []
-prTest = 0.7
+prTest = 0.1
 for l in Ls:
     n1s, n2s = Tools.GetDNs(l, False)
     datassBull.append([n1*n2 for n1, n2 in izip(n1s, n2s)])
