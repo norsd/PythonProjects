@@ -1,70 +1,8 @@
 #coding: utf-8
 __author__ = 'di_shen_sh'
 
-
-import pymongo as mo
-from pymongo import MongoClient
-import math
-from scipy import stats
-from scipy.stats import norm
-import numpy as np
-import pylab
-import matplotlib.pyplot as plt
-from WindPy import w
-from datetime import *
 from itertools import izip
-
-
-def _GetDatas(a_ifId, a_begin, a_end , a_max ):
-    client = MongoClient('mongodb://localhost:27017/')
-    col = client.Test[a_ifId]
-    if col.count() == 0:
-        w.start(waitTime=10)
-        wdatas = w.wsi(a_ifId,"open,close",a_begin,a_end)
-        datasOpen = wdatas.Data[0]
-        datasClose = wdatas.Data[1]
-        docs =[ {'_id':x[0],'open':x[1],'close':x[2] } for x in  zip(wdatas.Times, datasOpen, datasClose) ]
-        col.insert(docs)
-    else:
-        datasClose = [ x[u'close'] for x in col.find()]
-    return datasClose[:a_max]
-
-
-def _GetDNs( a_L , a_tilde = False ):
-    collection = "L_%s" % (a_L)
-    if a_tilde:collection = "L_%s_tilde" % a_L
-    client = MongoClient('mongodb://localhost:27017/')
-    col = client.Test[collection]
-    n1 = [ x[u'N1'] for x in col.find()]
-    n2 = [ x[u'N2'] for x in col.find()]
-    return n1,n2
-
-_Ls = (0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1,1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.55,1.6,1.65,1.7,1.75,1.8,1.85,1.9,1.95,2)
-
-
-def __GetPrs():
-    client = MongoClient('mongodb://localhost:27017/')
-    datassBear = []
-    datassBull = []
-    prsBear = []
-    prsBull = []
-    for l in _Ls:
-        n1s, n2s = _GetDNs(l, False)
-        datassBull.append([n1*n2 for n1, n2 in izip(n1s, n2s)])
-    for j in range(0, len(datassBull[0])):
-        row = [datassBull[i][j] for i in range(0, len(_Ls))]
-        ok = max(row)
-        prsBull.append(ok)
-    for l in _Ls:
-        n1s, n2s = _GetDNs(l, True)
-        datassBear.append([n1*n2 for n1, n2 in izip(n1s, n2s)])
-    for j in range(0, len(datassBear[0])):
-        row = [datassBear[i][j] for i in range(0, len(_Ls))]
-        ok = max(row)
-        prsBear.append(ok)
-    return prsBull, prsBear
-
-_prsBull, _prsBear = __GetPrs()
+import Tools
 
 
 def _GetPr( a_index, a_Bull ):
@@ -73,6 +11,8 @@ def _GetPr( a_index, a_Bull ):
     else:
         return _prsBear[a_index]
 
+_Ls = (0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1,1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.55,1.6,1.65,1.7,1.75,1.8,1.85,1.9,1.95,2)
+_prsBull, _prsBear = Tools.GetPrs(_Ls)
 
 class Account:
     def __init__(self, a_cash):
@@ -162,27 +102,26 @@ class Account:
             value += posPrice*posCount*multiplier*margin + (posPrice-curPrice)*posCount*multiplier
         return value
 
+paras = Tools.GetCurrentParameters()
+start = paras["start"]
+end = paras["end"]
+if0 = paras["if0"]
+if1 = paras["if1"]
+if0Multiplier = paras["multiplier0"]
+if0Margin = paras["margin0"]
+if1Multiplier = paras["multiplier1"]
+if1Margin = paras["margin1"]
 
-start = "2013-10-22 9:14:00"
-end = "2013-10-30 15:15:00"
-if0 = "IF1311.CFE"
-if1 = "IF1312.CFE"
-
-start = "2014-05-03 9:14:00"
-end = "2014-05-12 15:15:00"
-if0 = "IF1405.CFE"
-if1 = "IF1406.CFE"
-
-datas00 = _GetDatas(if0,start,end,952*2)[952:]
-datas11 = _GetDatas(if1,start,end,952*2)[952:]
+datas00 = Tools.GetDatas(if0,start,end,952*2)[952:]
+datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
 long = 0
 short = 0
 openTrd = 0.7
 closeTrd = 0.4
 acc = Account(250000)
-acc.AddContractInfo(if0, 300, 0.15)
-acc.AddContractInfo(if1, 300, 0.15)
+acc.AddContractInfo(if0, if0Multiplier, if0Margin)
+acc.AddContractInfo(if1, if1Multiplier, if1Margin)
 
 for i,ifps in enumerate(izip(datas00,datas11)):
     p0 = ifps[0]
