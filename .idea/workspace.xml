@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d10b0f5-84dd-4f80-8424-055f99bdf1c3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestDraw/TestGrid.Liqi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PythonProjects.iws" />
@@ -532,7 +529,11 @@
       <created>1400044354965</created>
       <updated>1400044354965</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="aaaa">
+      <created>1400047731512</created>
+      <updated>1400047731512</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
