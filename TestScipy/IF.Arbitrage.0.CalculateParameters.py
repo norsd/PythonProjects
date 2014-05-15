@@ -11,7 +11,7 @@ import pylab
 import Tools
 
 key1 = "IF"
-key2 = 1
+key2 = 2
 
 if key1 == "IF":
     if key2 == 0:
@@ -22,8 +22,13 @@ if key1 == "IF":
     elif key2 ==1:
         start = "2014-05-03 9:00:00"
         end = "2014-05-12 15:00:00"
-        if0 = "IF1405.CFE"
-        if1 = "IF1406.CFE"
+        if0 = "IF1406.CFE"
+        if1 = "IF1405.CFE"
+    elif key2 == 2:
+        start = "2014-05-12 9:00:00"
+        end = "2014-05-15 15:15:00"
+        if0 = "IF1406.CFE"
+        if1 = "IF1405.CFE"
     multiplier0 = 300
     margin0 = 0.15
     multiplier1 = 300
@@ -42,7 +47,7 @@ elif key1 == "RU":
     multiplier1 = 10
     margin1 = 0.15
 
-
+nSampleCount = 952
 datas0 = Tools.GetDatas(if0,start,end,952)
 datas1 = Tools.GetDatas(if1,start,end,952)
 
@@ -78,17 +83,38 @@ Tools.WriteCurrentParameters(start, end, if0, multiplier0, margin0, if1, multipl
 x = np.array(datas0)
 y = np.array(datas1)
 predict_y = intercept + slope * x
-pylab.plot(x, y, 'o')
-pylab.plot(x, predict_y, 'k-')
-pylab.show()
+
+fig = pylab.figure()
+plot0 = fig.add_subplot(311)
+plot1 = fig.add_subplot(312)
+plot2 = fig.add_subplot(313)
+
+#pylab.plot(x, y, 'o')
+#pylab.plot(x, predict_y, 'k-')
+#pylab.show()
+plot0.plot(x,y,'o')
+plot0.plot(x, predict_y, 'k-')
+
+plt.ylabel('%s - %s'%(if1,if0))
+plot1.plot(range(0, len(x)), y-x, '-')
+
 
 h = lna[:]
 h.sort()
 fit = stats.norm.pdf(h, np.mean(h), np.std(h))  #this is a fitting indeed
-plt.plot(h,fit,'-o')
-n, bins, patches = plt.hist(lna, 50, normed=1, facecolor='g', alpha=0.75)
-plt.grid(True)
-plt.show()
+plot2.plot(h, fit, '-o')
+
+n, bins, patches = plot2.hist(lna, 50, normed=1, facecolor='g', alpha=0.75)
+
+plot2.grid(True)
+
+fig.suptitle('%s  -   %s \n %s  -  %s \n %s = %s + %s * %s '%(if0, if1, start, end, if1, a, b, if0), fontsize=14, fontweight='bold')
+
+pylab.show() #fig.show()会一闪而过
+
+
+
+
 
 
 #alpha = -14.92827

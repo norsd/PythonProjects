@@ -2,7 +2,6 @@
 __author__ = 'di_shen_sh'
 
 from itertools import izip
-import matplotlib.pyplot as plt
 import numpy as np
 import pylab
 import Tools
@@ -131,8 +130,8 @@ datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
 long = 0
 short = 0
-openTrd = 0.5
-closeTrd = 0.1
+openTrd = 0.7
+closeTrd = 0.4
 acc = Account(250000)
 acc.AddContractInfo(if0, if0Multiplier, if0Margin)
 acc.AddContractInfo(if1, if1Multiplier, if1Margin)
