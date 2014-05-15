@@ -130,8 +130,10 @@ datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
 long = 0
 short = 0
-openTrd = 0.65
-closeTrd = 0.4
+openBullTrd = 0.99
+closeBullTrd = 0.4
+openBearTrd = 0.55
+closeBearTrd = 0.7
 acc = Account(250000)
 acc.AddContractInfo(if0, if0Multiplier, if0Margin)
 acc.AddContractInfo(if1, if1Multiplier, if1Margin)
@@ -149,16 +151,16 @@ for i,ifps in enumerate(izip(datas00,datas11)):
 
     bullLY.append(bullL)
     bearLY.append(bearL)
-    if bullL > openTrd:#开始牛市套利
+    if bullL > openBullTrd:#开始牛市套利
         acc.Open(if0, 1)
         acc.Open(if1, -1)
-    if bearL > closeTrd:#停止牛市套利
+    if bearL > closeBullTrd:#停止牛市套利
         acc.Close(if0, 1)
         acc.Close(if1, -1)
-    if bearL > openTrd:#开始熊市套利
+    if bearL > openBearTrd:#开始熊市套利
         acc.Open(if0, -1)
         acc.Open(if1,  1)
-    if bullL > closeTrd: #停止熊市套利
+    if bullL > closeBearTrd: #停止熊市套利
         acc.Close(if0, -1)
         acc.Close(if1,  1)
 

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d10b0f5-84dd-4f80-8424-055f99bdf1c3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestScipy/Scroll.Arbitrage.0.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.1.CalculateD1D2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py" afterPath="$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonProjects.iml" afterPath="$PROJECT_DIR$/.idea/PythonProjects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScipy/Tools.py" afterPath="$PROJECT_DIR$/TestScipy/Tools.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PythonProjects.iws" />
@@ -35,7 +29,7 @@
       <file leaf-file-name="IF.Arbitrage.Income.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="13" selection-start="4803" selection-end="4803" vertical-scroll-proportion="0.5469613" vertical-offset="2640" max-vertical-offset="4840">
+            <state line="133" column="18" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.42541435" vertical-offset="2706" max-vertical-offset="4884">
               <folding />
             </state>
           </provider>
@@ -75,7 +69,7 @@
       <file leaf-file-name="IF.Arbitrage.CreateData.Test.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="6" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="1650">
+            <state line="19" column="14" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="1650">
               <folding />
             </state>
           </provider>
@@ -124,7 +118,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
+    <option name="x" value="-2" />
     <option name="y" value="2" />
     <option name="width" value="1548" />
     <option name="height" value="824" />
@@ -528,13 +522,18 @@
       <created>1400133512402</created>
       <updated>1400133512402</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="aaaa">
+      <created>1400171795642</created>
+      <updated>1400171795642</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="2" width="1548" height="824" extended-state="0" />
+    <frame x="-2" y="2" width="1548" height="824" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -549,7 +548,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32681018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -853,14 +851,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="6" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="1650">
+        <state line="19" column="14" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="1650">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.Income.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="13" selection-start="4803" selection-end="4803" vertical-scroll-proportion="0.5469613" vertical-offset="2640" max-vertical-offset="4840">
+        <state line="133" column="18" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.42541435" vertical-offset="2706" max-vertical-offset="4884">
           <folding />
         </state>
       </provider>
