@@ -10,8 +10,8 @@ import numpy as np
 import pylab
 import Tools
 
-key1 = "IF"
-key2 = 2
+key1 = "RU"
+key2 = 0
 
 if key1 == "IF":
     if key2 == 0:
@@ -36,7 +36,7 @@ if key1 == "IF":
 elif key1 == "RU":
     if key2 == 0:
         start = "2014-05-03 9:00:00"
-        end = "2014-05-12 15:00:00"
+        end = "2014-05-15 15:00:00"
     elif key2 ==1:
         start = "2014-04-03 9:00:00"
         end = "2014-04-12 15:00:00"
@@ -51,8 +51,10 @@ nSampleCount = 952
 datas0 = Tools.GetDatas(if0,start,end,952)
 datas1 = Tools.GetDatas(if1,start,end,952)
 
-datas00 = Tools.GetDatas(if0,start,end,952*2)[952:]
-datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
+if not len(datas0)==952:
+    print "false datas0 length"
+if not len(datas1)==952:
+    print "false datas1 length"
 
 
 #对数收益率

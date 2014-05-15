@@ -130,11 +130,14 @@ datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
 long = 0
 short = 0
-openTrd = 0.7
+openTrd = 0.47
 closeTrd = 0.4
 acc = Account(250000)
 acc.AddContractInfo(if0, if0Multiplier, if0Margin)
 acc.AddContractInfo(if1, if1Multiplier, if1Margin)
+
+bullLY = []
+bearLY = []
 
 for i,ifps in enumerate(izip(datas00,datas11)):
     p0 = ifps[0]
@@ -144,6 +147,8 @@ for i,ifps in enumerate(izip(datas00,datas11)):
     acc.SetContractPrice(if0, p0, i)
     acc.SetContractPrice(if1, p1, i)
 
+    bullLY.append(bullL)
+    bearLY.append(bearL)
     if bullL > openTrd:#开始牛市套利
         acc.Open(if0, 1)
         acc.Open(if1, -1)
@@ -162,12 +167,13 @@ print acc.GetValue()
 
 
 x = np.array( [ i1-i0 for i0,i1 in izip(datas00,datas11)])
-pylab.plot(x, 'b-')
+
 
 bullOpenX = []
 bullOpenY = []
 bullCloseX = []
 bullCloseY = []
+
 
 bearOpenX = []
 bearOpenY = []
@@ -191,10 +197,21 @@ for d in  acc.GetDeals():
             bearCloseX.append( time )
             bearCloseY.append( y )
 
-pylab.plot(bullOpenX, bullOpenY, 's' )
-pylab.plot(bullCloseX, bullCloseY, 's' , mfc='none')
 
-pylab.plot(bearOpenX, bearOpenY, 'o')
-pylab.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
+
+fig = pylab.figure()
+ax211 = fig.add_subplot(211)
+ax211.plot(x, 'b-')
+
+ax211.plot(bullOpenX, bullOpenY, 'rs' )
+ax211.plot(bullCloseX, bullCloseY, 's' , mfc='none')
+
+ax211.plot(bearOpenX, bearOpenY, 'go')
+ax211.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
+
+ax212 = fig.add_subplot(212)
+ax212.plot(bearLY, 'g-')
+ax212.plot(bullLY, 'r-')
+
 pylab.show()
 
