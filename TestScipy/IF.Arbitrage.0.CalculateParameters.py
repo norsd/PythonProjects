@@ -10,7 +10,7 @@ import numpy as np
 import pylab
 import Tools
 
-key1 = "RU"
+key1 = "IF"
 key2 = 1
 
 if key1 == "IF":
