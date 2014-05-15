@@ -130,7 +130,7 @@ datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
 long = 0
 short = 0
-openTrd = 0.47
+openTrd = 0.65
 closeTrd = 0.4
 acc = Account(250000)
 acc.AddContractInfo(if0, if0Multiplier, if0Margin)

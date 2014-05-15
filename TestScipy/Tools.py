@@ -38,7 +38,7 @@ def GetDatas(a_ifId, a_begin, a_end , a_max ):
                 col.drop()
     if col.count() == 0:
         w.start(waitTime=10)
-        wdatas = w.wsi(a_ifId,"open,close",a_begin,a_end)
+        wdatas = w.wsi(a_ifId,"open,close",a_begin,a_end, 'Fill=Previous')
         datasOpen = wdatas.Data[0]
         datasClose = wdatas.Data[1]
         docs =[ {'_id':x[0],'open':x[1],'close':x[2] } for x in  zip(wdatas.Times, datasOpen, datasClose) ]
@@ -46,6 +46,8 @@ def GetDatas(a_ifId, a_begin, a_end , a_max ):
         colRange.insert(  [ {'_id':a_ifId} , {'_id':a_begin} , {'_id':a_end}] )
     else:
         datasClose = [ x[u'close'] for x in col.find()]
+    if a_max == -1:
+        return datasClose
     return datasClose[:a_max]
 
 

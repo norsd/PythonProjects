@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = 'di_shen_sh'
 
-from pymongo import MongoClient
 from scipy import stats
 
 import math
@@ -10,7 +9,7 @@ import numpy as np
 import pylab
 import Tools
 
-key1 = "RU"
+key1 = "TA"
 key2 = 0
 
 if key1 == "IF":
@@ -29,6 +28,11 @@ if key1 == "IF":
         end = "2014-05-15 15:15:00"
         if0 = "IF1406.CFE"
         if1 = "IF1405.CFE"
+    elif key2 == 3:
+        start = "2013-05-03 9:00:00"
+        end = "2013-05-12 15:15:00"
+        if0 = "IF1305.CFE"
+        if1 = "IF1306.CFE"
     multiplier0 = 300
     margin0 = 0.15
     multiplier1 = 300
@@ -46,16 +50,29 @@ elif key1 == "RU":
     margin0 = 0.15
     multiplier1 = 10
     margin1 = 0.15
+elif key1 == "TA":
+    if key2 == 0:
+        start = "2014-05-03 9:00:00"
+        end = "2014-05-15 15:00:00"
+    if0 = "TA409.CZC"
+    if1 = "TA501.CZC"
+    multiplier0 = 5
+    margin0 = 0.15
+    multiplier1 = 5
+    margin1 = 0.15
 
 nSampleCount = 952
 datas0 = Tools.GetDatas(if0,start,end,952)
 datas1 = Tools.GetDatas(if1,start,end,952)
 
-if not len(datas0)==952:
-    print "false datas0 length"
-if not len(datas1)==952:
-    print "false datas1 length"
 
+if  len(datas0) < 952:
+    print "false datas0 length:%s" % len(datas0)
+if  len(datas1) < 952:
+    print "false datas1 length:%s" % len(datas1)
+print "%s : %s" % (len(datas0),len(datas1))
+print [ i for i,x in enumerate(datas0) if math.isnan(x)]
+print [ i for i,x in enumerate(datas1) if math.isnan(x)]
 
 #对数收益率
 lna = [ math.log(x[1]/x[0]) for x in zip(datas0,datas0[1:]) ]

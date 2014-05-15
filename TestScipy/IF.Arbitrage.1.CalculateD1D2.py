@@ -40,14 +40,9 @@ C=0.4
 deltaT = 5/float(245)
 
 
-datas0 = Tools.GetDatas(if0,start,end,952)
-datas1 = Tools.GetDatas(if1,start,end,952)
-
 datas00 = Tools.GetDatas(if0,start,end,952*2)[952:]
 datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
 
-x = np.array(datas0)
-y = np.array(datas1)
 
 for L in Ls:
     d1s = [ Tools.CalcD1_Bull(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
