@@ -40,15 +40,14 @@ C=0.4
 deltaT = 5/float(245)
 
 
-datas00 = Tools.GetDatas(if0,start,end,952*2)[952:]
-datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
+datas00 = Tools.GetDatas(if0, start, end, -1)[952:]
+datas11 = Tools.GetDatas(if1, start, end, -1)[952:]
 
 
 for L in Ls:
     d1s = [ Tools.CalcD1_Bull(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
     d2s = [ Tools.CalcD2_Bull( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in izip(datas00,datas11) ]
     Tools.WriteDNs( d1s, d2s, L)
-
     d1s_bear = [ Tools.CalcD1_Bear(x,C,L,beta,mu,sigma,deltaT)  for x in datas00 ]
     d2s_bear = [ Tools.CalcD2_Bear( x[1] - (alpha + beta*x[0]) , L , sigmaEpsilon ) for x in izip(datas00,datas11) ]
     Tools.WriteDNs( d1s_bear, d2s_bear, L, True)

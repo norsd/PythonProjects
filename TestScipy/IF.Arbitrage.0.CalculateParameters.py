@@ -9,13 +9,13 @@ import numpy as np
 import pylab
 import Tools
 
-key1 = "TA"
+key1 = "IF"
 key2 = 0
 
 if key1 == "IF":
     if key2 == 0:
-        start = "2013-10-22 9:14:00"
-        end = "2013-10-30 15:15:00"
+        start = "2013-10-19 9:14:00"
+        end = "2013-11-10 15:15:00"
         if0 = "IF1311.CFE"
         if1 = "IF1312.CFE"
     elif key2 ==1:
@@ -111,7 +111,7 @@ plot2 = fig.add_subplot(313)
 #pylab.plot(x, y, 'o')
 #pylab.plot(x, predict_y, 'k-')
 #pylab.show()
-plot0.plot(x,y,'o')
+plot0.plot(x, y, 'o')
 plot0.plot(x, predict_y, 'k-')
 
 plt.ylabel('%s - %s'%(if1,if0))

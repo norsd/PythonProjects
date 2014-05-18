@@ -125,15 +125,15 @@ if0Margin = paras["margin0"]
 if1Multiplier = paras["multiplier1"]
 if1Margin = paras["margin1"]
 
-datas00 = Tools.GetDatas(if0,start,end,952*2)[952:]
-datas11 = Tools.GetDatas(if1,start,end,952*2)[952:]
+datas00 = Tools.GetDatas(if0, start, end, -1)[952:]
+datas11 = Tools.GetDatas(if1, start, end, -1)[952:]
 
 long = 0
 short = 0
-openBullTrd = 0.99
+openBullTrd = 0.7
 closeBullTrd = 0.4
-openBearTrd = 0.55
-closeBearTrd = 0.7
+openBearTrd = 0.7
+closeBearTrd = 0.4
 acc = Account(250000)
 acc.AddContractInfo(if0, if0Multiplier, if0Margin)
 acc.AddContractInfo(if1, if1Multiplier, if1Margin)
