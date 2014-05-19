@@ -47,6 +47,7 @@ def GetDatas(a_ifId, a_begin, a_end, a_max):
 
 _dtDatas = {}
 #仅从内存或者数据库获取数据
+#与ResetDatas2配合使用
 def GetDatas2(a_ifId, a_index, a_count):
     if not _dtDatas.has_key(a_ifId):
         client = MongoClient('mongodb://localhost:27017/')
@@ -56,33 +57,53 @@ def GetDatas2(a_ifId, a_index, a_count):
     return _dtDatas[a_ifId][a_index:(a_index + a_count)]
 
 #清空_dtDatas
+#与GetDatas2配合使用
 def ResetDatas2():
     _dtDatas.clear()
 
-#a_datas0:数据序列0
-#a_datas1:数据序列1
-#a_a: alpha
-#a_b: beta
-#a_ln0s: 数据序列0的对数收益率
-def Show0(a_name0, a_name1, a_start, a_datas0, a_datas1, a_a, a_b, a_ln0s):
-    fig = pylab.figure()
-    plot0 = fig.add_subplot(311)
-    plot1 = fig.add_subplot(312)
-    plot2 = fig.add_subplot(313)
-    plot0.plot(a_datas0, a_datas1, 'o')
-    plot0.plot(a_datas0, [a_a + x*a_b for x in a_datas0], 'k-')
-    plot1.plot([d1-d0 for d0, d1 in izip(a_datas0,a_datas1)], '-')
-    #plt.ylabel('%s - %s'%(if1,if0))
-    #plot1.plot(range(0, len(x)), y-x, '-')
-    h = a_ln0s[:]
-    h.sort()
-    fit = stats.norm.pdf(h, np.mean(h), np.std(h))  #this is a fitting indeed
-    plot2.plot(h, fit, '-o')
-    n, bins, patches = plot2.hist(a_ln0s, 50, normed=1, facecolor='g', alpha=0.75)
-    plot2.grid(True)
-    fig.suptitle('%s  -   %s \n %s - ? \n %s = %s + %s * %s ' % (a_name0, a_name1, a_start, a_name1, a_a, a_b, a_name0), fontsize=14, fontweight='bold')
-    pylab.show() #fig.show()会一闪而过
 
+def Show0(a_name0, a_name1, a_start, a_args, a_bull, a_bear):
+    datas0 = []#把args中各段的datas0组合成一个
+    datas1 = []
+    datas00 = []#args中最后一个arg的交易数据字段
+    datas11 = []
+    fig = pylab.figure()
+    magic = 200 + (len(a_args))*10
+    #一个arg包含了一个时间段的(datas0,datas1,a,b)
+    for i, arg in enumerate(a_args):
+        datas0.extend(arg[0])
+        datas1.extend(arg[1])
+        datas00 = arg[4]#只需要取最后一次的交易数据,不需要,也不能叠加
+        datas11 = arg[5]#只需要取最后一次的交易数据,不需要,也不能叠加
+        magici = magic + (i+1)
+        pi = fig.add_subplot(magici)
+        pi.plot(arg[0], arg[1], 'o')
+        a = arg[2]
+        b = arg[3]
+        pi.plot(arg[0], [a + b*x for x in arg[0]], 'k-')
+        #pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=14, fontweight='bold')
+        pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=10)
+    plot2 = fig.add_subplot(212)
+    deltas = [d1-d0 for d0, d1 in izip(datas0, datas1)]
+    #deltas没有包含最后一段交易数据！
+    deltas.extend([d1-d0 for d0,d1 in izip(datas00, datas11)])
+
+    plot2.plot(deltas, '-')
+
+    bullOpenX = a_bull[0]
+    bullOpenY = [deltas[x] for x in bullOpenX]
+    bullCloseX = a_bull[1]
+    bullCloseY = [deltas[x] for x in bullCloseX]
+    bearOpenX = a_bear[0]
+    bearOpenY = [deltas[x] for x in bearOpenX]
+    bearCloseX = a_bear[1]
+    bearCloseY = [deltas[x] for x in bearCloseX]
+    plot2.plot(bullOpenX, bullOpenY, 'rs' )
+    plot2.plot(bullCloseX, bullCloseY, 's' , mfc='none')
+    plot2.plot(bearOpenX, bearOpenY, 'go')
+    plot2.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
+
+    pylab.show() #fig.show()会一闪而过
 
 #将d1,d2数据写入数据库
 #同时计算每个数据的N

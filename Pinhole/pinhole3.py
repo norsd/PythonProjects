@@ -1,3 +1,4 @@
+#coding: utf-8
 import sys,socket,time,threading
 LOGGING = True
 logLock = threading.Lock()
@@ -39,6 +40,7 @@ class PipeThread(threading.Thread):
             except:
                 break
         log('%s terminating (%s->%s)',self , self.source.getpeername() , self.sink.getpeername())
+        self.sink.shutdown(socket.SHUT_RDWR)
         self.sink.close()
         self.source.close()
         self.pipesLock.acquire()
@@ -52,6 +54,7 @@ class PipeThread(threading.Thread):
         log('%s pipes still active',pipes_left)
 
     def Close(self):
+        self.source.shutdown(socket.SHUT_RDWR)
         self.source.close()
         self.pipes.remove(self)
 
@@ -126,10 +129,6 @@ if __name__ == '__main__':
     except(ValueError,IndexError):
         print 'Usage: %s newPort oriIp [oriPort]' % sys.argv[0]
         sys.exit(1)
-    sys.stdout = open('pinhole.log','w')
+    #sys.stdout = open('pinhole.log','w')
 
-    fwd = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    fwd.connect((oriIp,oriPort))
-    fwd.close()
     Pinhole(newPort,oriIp,oriPort).start()
-
