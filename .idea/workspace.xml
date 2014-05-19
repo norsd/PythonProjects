@@ -49,7 +49,7 @@
       <file leaf-file-name="Scroll.Arbitrage.0.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestScipy/Scroll.Arbitrage.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="15" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.4246738" vertical-offset="720" max-vertical-offset="2288">
+            <state line="37" column="21" selection-start="940" selection-end="940" vertical-scroll-proportion="0.34638196" vertical-offset="522" max-vertical-offset="2310">
               <folding>
                 <element signature="e#51#77#0" expanded="true" />
               </folding>
@@ -541,7 +541,11 @@
       <created>1400507111517</created>
       <updated>1400507111517</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="aaaa">
+      <created>1400507537934</created>
+      <updated>1400507537934</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -875,7 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/Scroll.Arbitrage.0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="15" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.4246738" vertical-offset="720" max-vertical-offset="2288">
+        <state line="37" column="21" selection-start="940" selection-end="940" vertical-scroll-proportion="0.34638196" vertical-offset="522" max-vertical-offset="2310">
           <folding>
             <element signature="e#51#77#0" expanded="true" />
           </folding>

@@ -35,7 +35,7 @@ closeBearTrd = 0.4
 
 argsShow0 = []#保存用于显示价差以及回归的数据
 
-for i in range(0, 4):
+for i in range(3, 4):
     datas0 = Tools.GetDatas2(if0, i*tradeCount, sampleCount)
     datas1 = Tools.GetDatas2(if1, i*tradeCount, sampleCount)
     datas00 = Tools.GetDatas2(if0, i*tradeCount+sampleCount, tradeCount)
@@ -48,6 +48,7 @@ for i in range(0, 4):
     si = len(datas0)
     if abs(a) > 50:
         ccd = 4
+        print "ignore!!!!!!!!!!!!!!!!"
     else:
         for j, ifps in enumerate(izip(datas00, datas11)):
             p0 = ifps[0]
