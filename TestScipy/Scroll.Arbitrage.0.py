@@ -12,11 +12,11 @@ if0Multiplier = 300
 if1Multiplier = 300
 if0Margin = 0.12
 if1Margin = 0.12
-start = "2013-10-10 09:00:00"
+start = "2013-10-22 09:00:00"
 end = "2013-11-10 15:00:00"
 
-sampleCount = int((4.5*60)*5)
-tradeCount = int((4.5*60)*5)
+sampleCount = 952#int((4.5*60)*3)
+tradeCount = 952#int((4.5*60)*3)
 
 Tools.GetDatas(if0, start, end, 1)
 Tools.GetDatas(if1, start, end, 1)
@@ -35,7 +35,7 @@ closeBearTrd = 0.4
 
 argsShow0 = []#保存用于显示价差以及回归的数据
 
-for i in range(3, 4):
+for i in range(0, 1):
     datas0 = Tools.GetDatas2(if0, i*tradeCount, sampleCount)
     datas1 = Tools.GetDatas2(if1, i*tradeCount, sampleCount)
     datas00 = Tools.GetDatas2(if0, i*tradeCount+sampleCount, tradeCount)
@@ -44,10 +44,11 @@ for i in range(3, 4):
     print a, b, sigmaEpsilon, muC, sigmaC
     bullLs, bearLs = \
         Arbitrage.CalculateD1D2(Ls, 0.4, a, b, sigmaEpsilon, muC, sigmaC, deltaT, datas00, datas11)
+    print [ x for x in bullLs if x>=0.7 ]
+    print [ x for x in bearLs if x>=0.7 ]
     #Trade
     si = len(datas0)
     if abs(a) > 50:
-        ccd = 4
         print "ignore!!!!!!!!!!!!!!!!"
     else:
         for j, ifps in enumerate(izip(datas00, datas11)):

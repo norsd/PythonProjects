@@ -114,12 +114,12 @@ def WriteDNs(a_datas1, a_datas2 , a_L , a_bear = False):
     col.drop()
     if a_bear:
         docs = [ {'_id':i ,
-                  'd1':x[0] , 'N1':norm.cdf(-x[0]),
-                  'd2':x[1] , 'N2':norm.cdf(-x[1])} for i, x in enumerate(izip( a_datas1,a_datas2))]
+                  'd1':x[0] , 'N1':stats.norm.cdf(-x[0]),
+                  'd2':x[1] , 'N2':stats.norm.cdf(-x[1])} for i, x in enumerate(izip( a_datas1,a_datas2))]
     else:
         docs = [ {'_id':i ,
-                  'd1':x[0] , 'N1':norm.cdf(x[0]),
-                  'd2':x[1] , 'N2':norm.cdf(x[1])} for i, x in enumerate(izip( a_datas1,a_datas2))]
+                  'd1':x[0] , 'N1':stats.norm.cdf(x[0]),
+                  'd2':x[1] , 'N2':stats.norm.cdf(x[1])} for i, x in enumerate(izip( a_datas1,a_datas2))]
     col.insert(docs)
     return
 

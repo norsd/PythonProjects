@@ -34,8 +34,8 @@ def CreateParameters(a_datas0, a_datas1):
 
 #返回
 #return:
-#0:len(datas00)个 bull在Ls中的最大值
-#1:len(datas00)个 bear在Ls中的最大值
+#0:len(datas00)个 bull在Ls中N(d1)*N(d2)的最大值
+#1:len(datas00)个 bear在Ls中N(d1)*N(d2)的最大值
 def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, a_datas00, a_datas11):
     C = a_C
     alpha = a_a
@@ -50,6 +50,7 @@ def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, 
     retBearMax = []
 
     ret0 = []
+    #纵截面
     for L in a_Ls:
         d1s = [Tools.CalcD1_Bull(x, C, L, beta, mu, sigma, deltaT) for x in datas00]
         d2s = [Tools.CalcD2_Bull(x[1] - (alpha + beta*x[0]), L, sigmaEpsilon) for x in izip(datas00, datas11)]
@@ -57,14 +58,17 @@ def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, 
         d1s_bear = [Tools.CalcD1_Bear(x, C, L, beta, mu, sigma, deltaT) for x in datas00]
         d2s_bear = [Tools.CalcD2_Bear(x[1] - (alpha + beta*x[0]), L, sigmaEpsilon) for x in izip(datas00, datas11)]
         #Tools.WriteDNs( d1s_bear, d2s_bear, L, True)
-        ret0.append((d1s, d2s, d1s_bear, d2s_bear))
+        Nx_bull = [ stats.norm.cdf(d1)*stats.norm.cdf(d2) for d1,d2 in izip(d1s,d2s)]
+        Nx_bear = [ stats.norm.cdf(-d1)*stats.norm.cdf(-d2) for d1,d2 in izip(d1s_bear,d2s_bear)]
+        ret0.append((Nx_bull, Nx_bear))
+    #横截面
     lCount = len(a_Ls)
     for i in range(0, len(datas00)):
         bulls = []
         bears = []
         for j in range(0, lCount):
-            bulls.append(ret0[j][0][i]*ret0[j][1][i])
-            bears.append(ret0[j][2][i]*ret0[j][3][i])
+            bulls.append(ret0[j][0][i])
+            bears.append(ret0[j][1][i])
         retBullMax.append(max(bulls))
         retBearMax.append(max(bears))
 
