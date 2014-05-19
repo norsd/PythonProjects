@@ -35,7 +35,7 @@ closeBearTrd = 0.4
 
 argsShow0 = []#保存用于显示价差以及回归的数据
 
-for i in range(0,4):
+for i in range(0, 4):
     datas0 = Tools.GetDatas2(if0, i*tradeCount, sampleCount)
     datas1 = Tools.GetDatas2(if1, i*tradeCount, sampleCount)
     datas00 = Tools.GetDatas2(if0, i*tradeCount+sampleCount, tradeCount)
@@ -46,29 +46,32 @@ for i in range(0,4):
         Arbitrage.CalculateD1D2(Ls, 0.4, a, b, sigmaEpsilon, muC, sigmaC, deltaT, datas00, datas11)
     #Trade
     si = len(datas0)
-    for j, ifps in enumerate(izip(datas00, datas11)):
-        p0 = ifps[0]
-        p1 = ifps[1]
-        bullL = bullLs[j]
-        bearL = bearLs[j]
-        acc.SetContractPrice(if0, p0, si+j)
-        acc.SetContractPrice(if1, p1, si+j)
-        if bullL > openBullTrd:#开始牛市套利
-            acc.Open(if0, 1)
-            acc.Open(if1, -1)
-        if bearL > closeBullTrd:#停止牛市套利
-            acc.Close(if0, 1)
-            acc.Close(if1, -1)
-        if bearL > openBearTrd:#开始熊市套利
-            acc.Open(if0, -1)
-            acc.Open(if1,  1)
-        if bullL > closeBearTrd: #停止熊市套利
-            acc.Close(if0, -1)
-            acc.Close(if1,  1)
-    acc.Close(if0, 1)
-    acc.Close(if0, -1)
-    acc.Close(if1, 1)
-    acc.Close(if1, -1)
+    if abs(a) > 50:
+        ccd = 4
+    else:
+        for j, ifps in enumerate(izip(datas00, datas11)):
+            p0 = ifps[0]
+            p1 = ifps[1]
+            bullL = bullLs[j]
+            bearL = bearLs[j]
+            acc.SetContractPrice(if0, p0, si+j)
+            acc.SetContractPrice(if1, p1, si+j)
+            if bullL > openBullTrd:#开始牛市套利
+                acc.Open(if0, 1)
+                acc.Open(if1, -1)
+            if bearL > closeBullTrd:#停止牛市套利
+                acc.Close(if0, 1)
+                acc.Close(if1, -1)
+            if bearL > openBearTrd:#开始熊市套利
+                acc.Open(if0, -1)
+                acc.Open(if1,  1)
+            if bullL > closeBearTrd: #停止熊市套利
+                acc.Close(if0, -1)
+                acc.Close(if1,  1)
+        acc.Close(if0, 1)
+        acc.Close(if0, -1)
+        acc.Close(if1, 1)
+        acc.Close(if1, -1)
     #保存用于显示价差以及回归的数据
     argsShow0.append((datas0, datas1, a, b, datas00, datas11))
 
