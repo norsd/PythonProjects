@@ -49,8 +49,10 @@
       <file leaf-file-name="Scroll.Arbitrage.0.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestScipy/Scroll.Arbitrage.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="23" selection-start="386" selection-end="386" vertical-scroll-proportion="-0.5508607" vertical-offset="726" max-vertical-offset="2266">
-              <folding />
+            <state line="49" column="16" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.69815665" vertical-offset="775" max-vertical-offset="2662">
+              <folding>
+                <element signature="e#51#77#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,10 +103,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="width" value="1552" />
+    <option name="height" value="842" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -549,18 +551,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1552" height="842" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16482359" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16471355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3970588" sideWeight="0.76671934" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34931508" sideWeight="0.3212217" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34931508" sideWeight="0.6787783" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34978843" sideWeight="0.32096353" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34978843" sideWeight="0.67838544" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -593,6 +595,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TestScipy/Tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="29" selection-start="2207" selection-end="2207" vertical-scroll-proportion="0.0" vertical-offset="1628" max-vertical-offset="4686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/BasicLinearRegression.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="196" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="616" />
@@ -823,11 +832,6 @@
         <state line="115" column="20" selection-start="3596" selection-end="3596" vertical-scroll-proportion="0.0" vertical-offset="2308" max-vertical-offset="3058" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/matplotlib/figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="917" column="16" selection-start="29788" selection-end="29788" vertical-scroll-proportion="1.5619335" vertical-offset="18458" max-vertical-offset="36212" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/Account.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="2354">
@@ -851,8 +855,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/Scroll.Arbitrage.0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="23" selection-start="386" selection-end="386" vertical-scroll-proportion="-0.5508607" vertical-offset="726" max-vertical-offset="2266">
-          <folding />
+        <state line="49" column="16" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.69815665" vertical-offset="775" max-vertical-offset="2662">
+          <folding>
+            <element signature="e#51#77#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

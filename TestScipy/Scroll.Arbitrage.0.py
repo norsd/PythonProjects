@@ -6,8 +6,8 @@ import Account
 import Arbitrage
 import Tools
 
-if0 = "IF1311.CFE"
 if1 = "IF1312.CFE"
+if0 = "IF1311.CFE"
 if0Multiplier = 300
 if1Multiplier = 300
 if0Margin = 0.12
@@ -35,12 +35,20 @@ closeBearTrd = 0.4
 
 argsShow0 = []#保存用于显示价差以及回归的数据
 
-for i in range(0, 4):
+i=2
+while i<3:
     datas0 = Tools.GetDatas2(if0, i*tradeCount, sampleCount)
     datas1 = Tools.GetDatas2(if1, i*tradeCount, sampleCount)
     datas00 = Tools.GetDatas2(if0, i*tradeCount+sampleCount, tradeCount)
     datas11 = Tools.GetDatas2(if1, i*tradeCount+sampleCount, tradeCount)
+    print len(datas0),len(datas1)
     a, b, sigmaEpsilon, muC, sigmaC, lns = Arbitrage.CreateParameters(datas0, datas1)
+    if b<1:
+        ifTmp = if0
+        if0 = if1
+        if1 = ifTmp
+        print a,b
+        continue
     print a, b, sigmaEpsilon, muC, sigmaC
     bullLs, bearLs = \
         Arbitrage.CalculateD1D2(Ls, 0.4, a, b, sigmaEpsilon, muC, sigmaC, deltaT, datas00, datas11)
@@ -51,6 +59,7 @@ for i in range(0, 4):
     if abs(a) > 50:
         print "ignore!!!!!!!!!!!!!!!!"
     else:
+        pos = 0
         for j, ifps in enumerate(izip(datas00, datas11)):
             p0 = ifps[0]
             p1 = ifps[1]
@@ -58,24 +67,30 @@ for i in range(0, 4):
             bearL = bearLs[j]
             acc.SetContractPrice(if0, p0, si+j)
             acc.SetContractPrice(if1, p1, si+j)
-            if bullL > openBullTrd:#开始牛市套利
+            if bullL > openBullTrd and pos == 0:#开始牛市套利
                 acc.Open(if0, 1)
                 acc.Open(if1, -1)
-            if bearL > closeBullTrd:#停止牛市套利
+                pos = 1
+            if bearL > closeBullTrd and pos == 1:#停止牛市套利
                 acc.Close(if0, 1)
                 acc.Close(if1, -1)
-            if bearL > openBearTrd:#开始熊市套利
+                pos = 0
+            if bearL > openBearTrd and pos == 0:#开始熊市套利
                 acc.Open(if0, -1)
                 acc.Open(if1,  1)
-            if bullL > closeBearTrd: #停止熊市套利
+                pos = -1
+            if bullL > closeBearTrd and pos == -1: #停止熊市套利
                 acc.Close(if0, -1)
                 acc.Close(if1,  1)
+                pos = 0
         acc.Close(if0, 1)
         acc.Close(if0, -1)
         acc.Close(if1, 1)
         acc.Close(if1, -1)
+        print acc.GetValue()
     #保存用于显示价差以及回归的数据
     argsShow0.append((datas0, datas1, a, b, datas00, datas11))
+    i += 1
 
 #记录交易点
 bullOpenX = []
