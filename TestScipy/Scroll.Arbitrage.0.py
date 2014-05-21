@@ -6,17 +6,17 @@ import Account
 import Arbitrage
 import Tools
 
-if1 = "IF1312.CFE"
-if0 = "IF1311.CFE"
+if1 = "RU1409.SHF"
+if0 = "RU1501.SHF"
 if0Multiplier = 300
 if1Multiplier = 300
 if0Margin = 0.12
 if1Margin = 0.12
-start = "2013-10-19 09:00:00"
-end = "2013-11-19 15:00:00"
+start = "2014-04-10 09:00:00"#"2013-10-19 09:00:00"
+end = "2014-05-02 15:00:00"
 
-sampleCount = 952#int((4.5*60)*3)
-tradeCount = 952#int((4.5*60)*3)
+sampleCount = int((4.5*60)*1)
+tradeCount = int((4.5*60)*1)
 
 Tools.GetDatas(if0, start, end, 1)
 Tools.GetDatas(if1, start, end, 1)
@@ -43,17 +43,15 @@ while i<3:
     datas11 = Tools.GetDatas2(if1, i*tradeCount+sampleCount, tradeCount)
     print len(datas0),len(datas1)
     a, b, sigmaEpsilon, muC, sigmaC, lns = Arbitrage.CreateParameters(datas0, datas1)
-    if b<1:
+    if b==1:
         ifTmp = if0
         if0 = if1
         if1 = ifTmp
-        print a,b
         continue
     print a, b, sigmaEpsilon, muC, sigmaC
     bullLs, bearLs = \
         Arbitrage.CalculateD1D2(Ls, 0.4, a, b, sigmaEpsilon, muC, sigmaC, deltaT, datas00, datas11)
-    print [ x for x in bullLs if x>=0.7 ]
-    print [ x for x in bearLs if x>=0.7 ]
+
     #Trade
     si = len(datas0)
     if abs(a) > 50:
