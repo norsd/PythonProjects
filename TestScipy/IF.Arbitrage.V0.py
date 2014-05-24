@@ -17,7 +17,7 @@ if key == 'last':
     if1 = "IF1405.CFE"
     if0 = "IF1406.CFE"
     start = "2014-04-21 09:15:00"#"2013-10-19 09:00:00"
-    end = "2014-04-30 15:15:00"
+    end = "2014-05-16 15:15:00"
 
 if0Multiplier = 300
 if1Multiplier = 300
@@ -62,13 +62,13 @@ while i < (datasLen/sampleCount):
         if0 = if1
         if1 = ifTmp
         continue
-    print a, b, sigmaEpsilon, muC, sigmaC
+    print "a=%s, b=%s, sigmaEpsilon=%s, mu=%s, sigma=%s" %(a, b, sigmaEpsilon, muC, sigmaC)
     bullLs, bearLs = \
         Arbitrage.CalculateD1D2(Ls, 0.4, a, b, sigmaEpsilon, muC, sigmaC, deltaT, datas00, datas11)
 
     #Trade
     si = len(datas0)
-    if abs(a) > 50:
+    if abs(a) > 500:
         print "ignore!!!!!!!!!!!!!!!!"
     else:
         pos = 0
@@ -121,7 +121,7 @@ for d in acc.GetDeals():
             bearOpenX.append(time)
         elif not d["Open"] and not d["Long"]:
             bearCloseX.append(time)
-print bullOpenX
+
 Tools.Show0(if0, if1, start, argsShow0, (bullOpenX, bullCloseX),
                                         (bearOpenX, bearCloseX))
 
