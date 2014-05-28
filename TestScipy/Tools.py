@@ -44,7 +44,6 @@ def GetDatas(a_ifId, a_begin, a_end, a_max):
         return datasClose
     return datasClose[:a_max]
 
-
 _dtDatas = {}
 #仅从内存或者数据库获取数据
 #与ResetDatas2配合使用
@@ -60,50 +59,6 @@ def GetDatas2(a_ifId, a_index, a_count):
 #与GetDatas2配合使用
 def ResetDatas2():
     _dtDatas.clear()
-
-
-def Show0(a_name0, a_name1, a_start, a_args, a_bull, a_bear):
-    datas0 = []#把args中各段的datas0组合成一个
-    datas1 = []
-    datas00 = []#args中最后一个arg的交易数据字段
-    datas11 = []
-    fig = pylab.figure()
-    magic = 200 + (len(a_args))*10
-    #一个arg包含了一个时间段的(datas0,datas1,a,b)
-    for i, arg in enumerate(a_args):
-        datas0.extend(arg[0])
-        datas1.extend(arg[1])
-        datas00 = arg[4]#只需要取最后一次的交易数据,不需要,也不能叠加
-        datas11 = arg[5]#只需要取最后一次的交易数据,不需要,也不能叠加
-        magici = magic + (i+1)
-        pi = fig.add_subplot(magici)
-        pi.plot(arg[0], arg[1], 'o')
-        a = arg[2]
-        b = arg[3]
-        pi.plot(arg[0], [a + b*x for x in arg[0]], 'k-')
-        #pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=14, fontweight='bold')
-        pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=10)
-    plot2 = fig.add_subplot(212)
-    deltas = [d1-d0 for d0, d1 in izip(datas0, datas1)]
-    #deltas没有包含最后一段交易数据！
-    deltas.extend([d1-d0 for d0,d1 in izip(datas00, datas11)])
-
-    plot2.plot(deltas, '-')
-
-    bullOpenX = a_bull[0]
-    bullOpenY = [deltas[x] for x in bullOpenX]
-    bullCloseX = a_bull[1]
-    bullCloseY = [deltas[x] for x in bullCloseX]
-    bearOpenX = a_bear[0]
-    bearOpenY = [deltas[x] for x in bearOpenX]
-    bearCloseX = a_bear[1]
-    bearCloseY = [deltas[x] for x in bearCloseX]
-    plot2.plot(bullOpenX, bullOpenY, 'rs' )
-    plot2.plot(bullCloseX, bullCloseY, 's' , mfc='none')
-    plot2.plot(bearOpenX, bearOpenY, 'go')
-    plot2.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
-
-    pylab.show() #fig.show()会一闪而过
 
 #将d1,d2数据写入数据库
 #同时计算每个数据的N
@@ -130,8 +85,6 @@ def GetDNs( a_L , a_bear = False ):
     n1 = [ x[u'N1'] for x in col.find()]
     n2 = [ x[u'N2'] for x in col.find()]
     return n1,n2
-
-
 
 def CalcD1_Bull( f , c , l , beta , miu , sigma , t ):
     ss = sigma**2
@@ -194,6 +147,66 @@ def GetCurrentParameters():
     mu = paras[u'mu']
     sigma = paras[u'sigma']
     return paras
+
+def Show0(a_name0, a_name1, a_start, a_args, a_bull, a_bear):
+    datas0 = []#把args中各段的datas0组合成一个
+    datas1 = []
+    datas00 = []#args中最后一个arg的交易数据字段
+    datas11 = []
+    fig = pylab.figure()
+    magic = 200 + (len(a_args))*10
+    #一个arg包含了一个时间段的(datas0,datas1,a,b)
+    for i, arg in enumerate(a_args):
+        datas0.extend(arg[0])
+        datas1.extend(arg[1])
+        datas00 = arg[4]#只需要取最后一次的交易数据,不需要,也不能叠加
+        datas11 = arg[5]#只需要取最后一次的交易数据,不需要,也不能叠加
+        magici = magic + (i+1)
+        pi = fig.add_subplot(magici)
+        pi.plot(arg[0], arg[1], 'o')
+        a = arg[2]
+        b = arg[3]
+        pi.plot(arg[0], [a + b*x for x in arg[0]], 'k-')
+        #pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=14, fontweight='bold')
+        pylab.title('%s = %s + %s * %s ' % (a_name1, a, b, a_name0), fontsize=10)
+    plot2 = fig.add_subplot(212)
+    deltas = [d1-d0 for d0, d1 in izip(datas0, datas1)]
+    #deltas没有包含最后一段交易数据！
+    deltas.extend([d1-d0 for d0,d1 in izip(datas00, datas11)])
+
+    plot2.plot(deltas, '-')
+
+    bullOpenX = a_bull[0]
+    bullOpenY = [deltas[x] for x in bullOpenX]
+    bullCloseX = a_bull[1]
+    bullCloseY = [deltas[x] for x in bullCloseX]
+    bearOpenX = a_bear[0]
+    bearOpenY = [deltas[x] for x in bearOpenX]
+    bearCloseX = a_bear[1]
+    bearCloseY = [deltas[x] for x in bearCloseX]
+    plot2.plot(bullOpenX, bullOpenY, 'rs' )
+    plot2.plot(bullCloseX, bullCloseY, 's' , mfc='none')
+    plot2.plot(bearOpenX, bearOpenY, 'go')
+    plot2.plot(bearCloseX, bearCloseY, 'o' , mfc='none')
+
+    pylab.show() #fig.show()会一闪而过
+
+def ShowLinearAndPricesDelta(a_slope, a_intercept, a_datas0, a_datas1):
+    intercept = a_intercept
+    slope = a_slope
+    datas0 = a_datas0
+    datas1 = a_datas1
+    fig = pylab.figure()
+    pi = fig.add_subplot(211)
+    pi.plot(datas0, datas1, 'o')
+    pi.plot(datas0, [intercept + slope*x for x in datas0], 'k-')
+
+    piDeltas = fig.add_subplot(212)
+    piDeltas.plot([b-a for a, b in izip(datas0, datas1)], 'b-')
+
+    pylab.show()
+
+
 
 def WriteCurrentParameters( a_start, a_end,
                             a_if0, a_multiplier0, a_margin0,

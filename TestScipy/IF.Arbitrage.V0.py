@@ -6,6 +6,7 @@ import Account
 import Arbitrage
 import Tools
 
+
 key = 'now'
 key = 'last'
 if key == 'now':
@@ -14,10 +15,10 @@ if key == 'now':
     start = "2014-05-19 09:15:00"#"2013-10-19 09:00:00"
     end = "2014-05-23 15:15:00"
 if key == 'last':
-    if1 = "IF1405.CFE"
-    if0 = "IF1406.CFE"
-    start = "2014-04-21 09:15:00"#"2013-10-19 09:00:00"
-    end = "2014-05-16 15:15:00"
+    if1 = "IF1402.CFE"
+    if0 = "IF1403.CFE"
+    start = "2014-01-20 09:15:00"#"2013-10-19 09:00:00"
+    end = "2014-02-21 15:15:00"
 
 if0Multiplier = 300
 if1Multiplier = 300

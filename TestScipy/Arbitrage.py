@@ -49,6 +49,7 @@ def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, 
     retBullMax = []
     retBearMax = []
 
+    print "alpha:%s" % alpha
     ret0 = []
     #纵截面
     for L in a_Ls:
@@ -60,6 +61,7 @@ def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, 
         #Tools.WriteDNs( d1s_bear, d2s_bear, L, True)
         Nx_bull = [ stats.norm.cdf(d1)*stats.norm.cdf(d2) for d1,d2 in izip(d1s,d2s)]
         Nx_bear = [ stats.norm.cdf(-d1)*stats.norm.cdf(-d2) for d1,d2 in izip(d1s_bear,d2s_bear)]
+
         ret0.append((Nx_bull, Nx_bear))
     #横截面
     lCount = len(a_Ls)
@@ -72,4 +74,6 @@ def CalculateD1D2(a_Ls, a_C, a_a, a_b, a_sigmaEpsilon, a_mu, a_sigma, a_deltaT, 
         retBullMax.append(max(bulls))
         retBearMax.append(max(bears))
 
+    print retBullMax
+    print retBearMax
     return retBullMax, retBearMax
