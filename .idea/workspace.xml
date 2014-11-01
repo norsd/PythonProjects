@@ -5,14 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d10b0f5-84dd-4f80-8424-055f99bdf1c3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/ImageHash.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WritePositionInfoDaily/WritePositionInfoDaily.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/norlib_python/XML/XML2PythonObject.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/norlib_python/XML/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/liqi_20141017.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonProjects.iml" afterPath="$PROJECT_DIR$/.idea/PythonProjects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PythonProjects.iws" />
@@ -39,7 +31,7 @@
       <file leaf-file-name="ImageHash.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/ImageHash.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="73" selection-start="954" selection-end="954" vertical-scroll-proportion="0.5451895" vertical-offset="352" max-vertical-offset="1342">
+            <state line="33" column="18" selection-start="899" selection-end="899" vertical-scroll-proportion="0.5820029" vertical-offset="325" max-vertical-offset="1342">
               <folding>
                 <element signature="e#142#154#0" expanded="true" />
               </folding>
@@ -47,21 +39,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Arbitrage.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestScipy/Arbitrage.py">
+      <file leaf-file-name="mongo_client.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python34/Lib/site-packages/pymongo/mongo_client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="91" selection-start="1761" selection-end="1765" vertical-scroll-proportion="-47.384617" vertical-offset="0" max-vertical-offset="1848">
-              <folding>
-                <element signature="e#42#68#0" expanded="true" />
-              </folding>
+            <state line="385" column="0" selection-start="17434" selection-end="17434" vertical-scroll-proportion="0.0" vertical-offset="8470" max-vertical-offset="33374">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="draw.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestDraw/draw.py">
+      <file leaf-file-name="Arbitrage.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TestScipy/Arbitrage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="20" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+            <state line="56" column="91" selection-start="1761" selection-end="1765" vertical-scroll-proportion="0.0" vertical-offset="1232" max-vertical-offset="1848">
               <folding />
             </state>
           </provider>
@@ -86,7 +76,7 @@
       <file leaf-file-name="TestAnimation.0.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestDraw/TestAnimation.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="24" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1672">
+            <state line="54" column="24" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0" vertical-offset="1188" max-vertical-offset="1738">
               <folding />
             </state>
           </provider>
@@ -95,7 +85,7 @@
       <file leaf-file-name="TestDraw.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestDraw/TestDraw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="19" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="506">
+            <state line="9" column="19" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="550">
               <folding />
             </state>
           </provider>
@@ -104,7 +94,7 @@
       <file leaf-file-name="TestGrid.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestDraw/TestGrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="14" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="546" max-vertical-offset="1232">
+            <state line="34" column="14" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1276">
               <folding />
             </state>
           </provider>
@@ -113,18 +103,7 @@
       <file leaf-file-name="TestTest.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestDraw/TestTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="26" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3278">
-              <folding>
-                <element signature="e#29#60#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="animate_decay.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestDraw/animate_decay.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="14" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="858">
+            <state line="15" column="26" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="3278">
               <folding />
             </state>
           </provider>
@@ -175,6 +154,7 @@
         <option value="$PROJECT_DIR$/TestScipy/IF.Arbitrage.CreateData.Test.py" />
         <option value="$PROJECT_DIR$/Test/liqi_20141017.py" />
         <option value="$PROJECT_DIR$/Test/ImageHash.py" />
+        <option value="$USER_HOME$/Desktop/WritePositionInfoDaily.py" />
       </list>
     </option>
   </component>
@@ -210,6 +190,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -228,65 +209,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestScipy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestDraw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SendComputerRebootMail" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,7 +229,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.ImageHash">
+  <component name="RunManager" selected="Python.WritePositionInfoDaily (1)">
     <configuration default="false" name="pinhole3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -320,24 +244,6 @@
       <module name="PythonProjects" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pinhole/pinhole3.py" />
       <option name="PARAMETERS" value="11111 172.30.3.183 27017" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="WritePositionInfoDaily" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WritePositionInfoDaily" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonProjects" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WritePositionInfoDaily/WritePositionInfoDaily.py" />
-      <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -393,6 +299,26 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/ImageHash.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="WritePositionInfoDaily (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonProjects" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/WritePositionInfoDaily.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -540,18 +466,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.Scroll.Arbitrage.0" />
       <item index="1" class="java.lang.String" itemvalue="Python.pinhole3" />
-      <item index="2" class="java.lang.String" itemvalue="Python.WritePositionInfoDaily" />
-      <item index="3" class="java.lang.String" itemvalue="Python.pinhole2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.liqi_20141017" />
-      <item index="5" class="java.lang.String" itemvalue="Python.ImageHash" />
+      <item index="2" class="java.lang.String" itemvalue="Python.pinhole2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.liqi_20141017" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ImageHash" />
+      <item index="5" class="java.lang.String" itemvalue="Python.WritePositionInfoDaily (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ImageHash" />
-        <item index="1" class="java.lang.String" itemvalue="Python.liqi_20141017" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pinhole3" />
-        <item index="3" class="java.lang.String" itemvalue="Python.pinhole2" />
-        <item index="4" class="java.lang.String" itemvalue="Python.WritePositionInfoDaily" />
+        <item index="0" class="java.lang.String" itemvalue="Python.WritePositionInfoDaily (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ImageHash" />
+        <item index="2" class="java.lang.String" itemvalue="Python.liqi_20141017" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pinhole3" />
+        <item index="4" class="java.lang.String" itemvalue="Python.pinhole2" />
       </list>
     </recent_temporary>
   </component>
@@ -663,22 +589,26 @@
       <created>1401267869934</created>
       <updated>1401267869934</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="aaaa">
+      <created>1413890404261</created>
+      <updated>1413890404261</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13270143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3958021" sideWeight="0.76671934" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13270143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39509803" sideWeight="0.76671934" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3019608" sideWeight="0.25803053" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3019608" sideWeight="0.74196947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30039138" sideWeight="0.25803053" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3009804" sideWeight="0.74196947" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -714,18 +644,15 @@
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="28" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TestScipy/IF.Arbitrage.0.CalculateParameters.py">
+    <entry file="file://$PROJECT_DIR$/TestDraw/TestTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="12" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="902" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestScipy/Brownian.motion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="924" />
+        <state line="15" column="26" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="3278">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ML4/bayes.py">
@@ -915,11 +842,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/liqi_20141017.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="46" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726">
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="8" column="46" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/test.py">
@@ -931,16 +854,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestDraw/animate_decay.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="14" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="858">
-          <folding />
-        </state>
+        <state line="21" column="14" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="858" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestDraw/draw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding />
-        </state>
+        <state line="5" column="20" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestDraw/other.py">
@@ -979,24 +898,27 @@
     <entry file="file://$PROJECT_DIR$/TestDraw/TestTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="26" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3278">
-          <folding>
-            <element signature="e#29#60#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScipy/Arbitrage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="91" selection-start="1761" selection-end="1765" vertical-scroll-proportion="-47.384617" vertical-offset="0" max-vertical-offset="1848">
-          <folding>
-            <element signature="e#42#68#0" expanded="true" />
-          </folding>
+        <state line="56" column="91" selection-start="1761" selection-end="1765" vertical-scroll-proportion="0.0" vertical-offset="1232" max-vertical-offset="1848">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/pymongo/mongo_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="385" column="0" selection-start="17434" selection-end="17434" vertical-scroll-proportion="0.0" vertical-offset="7679" max-vertical-offset="32780">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/ImageHash.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="73" selection-start="954" selection-end="954" vertical-scroll-proportion="0.5451895" vertical-offset="352" max-vertical-offset="1342">
+        <state line="33" column="18" selection-start="899" selection-end="899" vertical-scroll-proportion="0.5820029" vertical-offset="325" max-vertical-offset="1342">
           <folding>
             <element signature="e#142#154#0" expanded="true" />
           </folding>
