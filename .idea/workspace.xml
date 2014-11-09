@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d10b0f5-84dd-4f80-8424-055f99bdf1c3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QuantTest/DataCenter.py" afterPath="$PROJECT_DIR$/QuantTest/DataCenter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonProjects.iml" afterPath="$PROJECT_DIR$/.idea/PythonProjects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QuantTest/Test.py" afterPath="$PROJECT_DIR$/QuantTest/Test.py" />
+      <change type="DELETED" beforePath="D:\PythonProjects\QuantTest\DataCenter.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\PythonProjects\QuantTest\KLine.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\PythonProjects\QuantTest\KLines.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\PythonProjects\QuantTest\Test.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\PythonProjects\QuantTest\__init__.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\PythonProjects\QuantTest\DataCenter.py" afterPath="$PROJECT_DIR$/Quant/DataCenter.py" />
+      <change type="MOVED" beforePath="D:\PythonProjects\QuantTest\KLine.py" afterPath="$PROJECT_DIR$/Quant/KLine.py" />
+      <change type="MOVED" beforePath="D:\PythonProjects\QuantTest\KLines.py" afterPath="$PROJECT_DIR$/Quant/KLines.py" />
+      <change type="MOVED" beforePath="D:\PythonProjects\QuantTest\Test.py" afterPath="$PROJECT_DIR$/Quant/Test.py" />
+      <change type="MOVED" beforePath="D:\PythonProjects\QuantTest\__init__.py" afterPath="$PROJECT_DIR$/Quant/__init__.py" />
     </list>
     <ignored path="PythonProjects.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +56,7 @@
         </entry>
       </file>
       <file leaf-file-name="Test.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/QuantTest/Test.py">
+        <entry file="file://$PROJECT_DIR$/Quant/Test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.38404453" vertical-offset="0" max-vertical-offset="539">
               <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -59,7 +66,7 @@
         </entry>
       </file>
       <file leaf-file-name="KLine.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/QuantTest/KLine.py">
+        <entry file="file://$PROJECT_DIR$/Quant/KLine.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -69,7 +76,7 @@
         </entry>
       </file>
       <file leaf-file-name="KLines.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/QuantTest/KLines.py">
+        <entry file="file://$PROJECT_DIR$/Quant/KLines.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -79,7 +86,7 @@
         </entry>
       </file>
       <file leaf-file-name="DataCenter.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/QuantTest/DataCenter.py">
+        <entry file="file://$PROJECT_DIR$/Quant/DataCenter.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="736">
               <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
@@ -189,7 +196,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="QuantTest" />
+              <option name="myItemId" value="Quant" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -561,18 +568,23 @@
       <created>1414925457836</created>
       <updated>1414925457836</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Quant">
+      <created>1415545503727</created>
+      <updated>1415545503727</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.146875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.146875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3970588" sideWeight="0.76671934" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4002112" sideWeight="0.321875" order="7" side_tool="true" content_ui="tabs" />
@@ -582,7 +594,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32681018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -604,7 +615,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="aaaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="aaaa" />
+    <MESSAGE value="Quant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quant" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -941,7 +953,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuantTest/KLine.py">
+    <entry file="file://$PROJECT_DIR$/Quant/KLine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -949,7 +961,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuantTest/KLines.py">
+    <entry file="file://$PROJECT_DIR$/Quant/KLines.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -957,7 +969,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuantTest/DataCenter.py">
+    <entry file="file://$PROJECT_DIR$/Quant/DataCenter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="736">
           <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
@@ -965,7 +977,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QuantTest/Test.py">
+    <entry file="file://$PROJECT_DIR$/Quant/Test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38404453" vertical-offset="0" max-vertical-offset="539">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
