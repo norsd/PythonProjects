@@ -21,7 +21,6 @@ class KLinesCollection:
          self._str_varietyid = a_varietyid
          self._mc = a_mc
      def __getitem__(self, a_seconds):
-        print(a_seconds)
         return KLines.KLines(self._mc, self._str_varietyid, a_seconds)
 
 
