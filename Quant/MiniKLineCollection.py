@@ -5,7 +5,7 @@ from MiniKLine import *
 from norlib.DateTime import *
 from sys import *
 
-class MiniKLines:
+class MiniKLineCollection:
     #MongoClient mc
     def __init__(self, a_mc, a_varietyid, a_seconds):
         self._str_varietyid = a_varietyid
@@ -22,7 +22,7 @@ class MiniKLines:
         for t in self._col.find({"_id": {"$gte": begin, "$lte": end}}):
             if i >= a_count:
                 break
-            ret.append(MiniKLineData(self._str_varietyid, t["_id"], t["OpenPrice"], t["HighPrice"], t["LowPrice"], t["ClosePrice"], t["Volume"]))
+            ret.append(MiniKLineData(self._str_varietyid, addhours(t["_id"], 8), t["OpenPrice"], t["HighPrice"], t["LowPrice"], t["ClosePrice"], t["Volume"]))
             i += 1
         return ret
 

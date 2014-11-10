@@ -1,7 +1,7 @@
 __author__ = 'di_shen_sh@163.com'
 
 import pymongo
-import KLines
+from MiniKLineCollection import *
 
 class DataCenter:
     #'mongodb://localhost:27017/'
@@ -12,16 +12,16 @@ class DataCenter:
 
     def __getattr__(self, item):
         if item not in self.__dict__ and type(item) is str:
-            return KLinesCollection("{0}.CFE".format(item), self._mc)
+            return MiniKLinesCollectionHelper("{0}.CFE".format(item), self._mc)
         return self.__dict__[item]
 
-class KLinesCollection:
+class MiniKLinesCollectionHelper:
      #MongoClient mc
      def __init__(self, a_varietyid, a_mc):
          self._str_varietyid = a_varietyid
          self._mc = a_mc
      def __getitem__(self, a_seconds):
-        return KLines.KLines(self._mc, self._str_varietyid, a_seconds)
+        return MiniKLineCollection(self._mc, self._str_varietyid, a_seconds)
 
 
 
