@@ -4,6 +4,6 @@ from DataCenter import *
 
 datacenter = DataCenter("mongodb://localhost:27017/")
 klines = datacenter.IF当月[300]
-
+print(klines.Count)
 
 
