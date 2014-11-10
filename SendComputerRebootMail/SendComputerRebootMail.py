@@ -9,8 +9,8 @@ try:
     #关键语句,使得py文件能够找到其他module
     #关键语句,使得py文件能够双击在外部运行
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from norlib_python.Mail import HtmlMail
-    from norlib_python.Socket import Ip
+    from norlib.Mail import HtmlMail
+    from norlib.Socket import Ip
 except Exception,ex:
     print 'Load library Exception:\r\n'
     print ex

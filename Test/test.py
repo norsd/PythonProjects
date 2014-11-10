@@ -7,7 +7,7 @@ import pymongo
 import sys
 
 #sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from norlib_python.XML import XML2PythonObject
+from norlib.XML import XML2PythonObject
 from pymongo import MongoClient
 from urllib.request import urlopen
 
