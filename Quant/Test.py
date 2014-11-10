@@ -6,8 +6,8 @@ from norlib.graphics import *
 datacenter = DataCenter("mongodb://localhost:27017/")
 klinecol = datacenter.IF当月[300]
 
-klines = klinecol.getdatas(20140101, 20141101)
-pairs = [(i,k) for i, k in enumerate(klines) if k.SolidLength>= 10]
+klines = klinecol.getdatas(20130101, 20141101)
+pairs = [(i,k) for i, k in enumerate(klines) if k.SolidLength>= 14]
 
 indexs, datas=zip(*pairs)
 
@@ -15,6 +15,7 @@ indexs, datas=zip(*pairs)
 nextlengths = [klines[i+1].SolidLength for i in indexs]
 
 bar.draw(nextlengths)
+hist.draw(nextlengths, len(nextlengths))
 
 
 #print(len(datas))

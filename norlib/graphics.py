@@ -4,8 +4,10 @@ import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 
-
+#bar图
 class bar:
+    #默认正数显示红色,负数显示绿色
+    #a_datas是数值型集合
     def draw(a_datas, positive='red' , negative='green'):
         y = a_datas
 
