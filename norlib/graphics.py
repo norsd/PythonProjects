@@ -3,12 +3,14 @@ __author__ = 'di_shen_sh@163.com'
 import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 
 #bar图
 class bar:
     #默认正数显示红色,负数显示绿色
     #a_datas是数值型集合
-    def draw(a_datas, positive='red' , negative='green'):
+    #a_xinfos是可以通过双击Bar在Console中显示出相应的信息,例如时间信息
+    def draw(a_datas, a_xinfos=None, positive='red', negative='green'):
         y = a_datas
 
         xp = [i for i in range(0, len(y)) if y[i]>=0]
@@ -19,10 +21,23 @@ class bar:
 
         fig = plt.figure()
         ax1 = fig.add_subplot(111)
-        ax1.bar(xp, yp, 0.35, color=positive)
-        ax1.bar(xn, yn, 0.35, color=negative)
+        ax1.bar(xp, yp, 0.35, color=positive, picker=a_xinfos is not None)
+        ax1.bar(xn, yn, 0.35, color=negative, picker=a_xinfos is not None)
+
+        if a_xinfos is not None:
+            for label in ax1.get_xticklabels():  # make the xtick labels pickable
+                label.set_picker(True)
+            #定义闭包函数
+            def _onpick1(event):
+                if isinstance(event.artist, Rectangle):
+                    rect = event.artist
+                    #matplotlib中Rectangle的x就是index
+                    index = rect.get_x()
+                    print(a_xinfos[index])
+            fig.canvas.mpl_connect('pick_event', _onpick1)
         plt.show()
         return
+
 
     def sample():
         N = 5
@@ -44,6 +59,7 @@ class bar:
         plt.legend( (p1[0], p2[0]), ('Men', 'Women') )
 
         plt.show()
+
 
 
 #直方图(正态分布)
