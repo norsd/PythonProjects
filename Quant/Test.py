@@ -11,12 +11,18 @@ pairs = [(i,k) for i, k in enumerate(klines) if k.SolidLength>= 15]
 
 indexs, datas=zip(*pairs)
 
-
+nextklines = [klines[i+1] for i in indexs]
 nextlengths = [klines[i+1].SolidLength for i in indexs]
 datetimes = [klines[i+1].Time for i in indexs]
 
-bar.draw(nextlengths, datetimes)
-hist.draw(nextlengths, len(nextlengths))
+def _onbar(a_index):
+    print(datetimes[a_index])
+    kl = nextklines[a_index]
+
+    print("Upper:{0}\r\nLower:{1}".format(kl.HighLength, kl.LowLength))
+
+bar.draw(nextlengths, _onbar)
+#hist.draw(nextlengths, len(nextlengths))
 
 
 #print(len(datas))

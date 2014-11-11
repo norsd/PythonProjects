@@ -46,6 +46,27 @@ class MiniKLineData:
     def SolidLength(self):
         return self._close - self._open
 
+    @property
+    def IsPostive(self):
+        return self._close>self._open
+
+    @property
+    def IsNegative(self):
+        return self._open>self._close
+
+    #上影线长度
+    @property
+    def HighLength(self):
+        if self.IsPostive:
+            return self._high - self._close
+        return self._high - self._open
+
+    @property
+    def LowLength(self):
+        if self.IsNegative:
+            return self._close - self._low
+        return self._open - self._low
+
 
 
 

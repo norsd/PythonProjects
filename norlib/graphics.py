@@ -9,8 +9,9 @@ from matplotlib.patches import Rectangle
 class bar:
     #默认正数显示红色,负数显示绿色
     #a_datas是数值型集合
-    #a_xinfos是可以通过双击Bar在Console中显示出相应的信息,例如时间信息
-    def draw(a_datas, a_xinfos=None, positive='red', negative='green'):
+    #xinfos_fn是可以通过双击Bar在Console中显示出相应的信息,例如时间信息序列
+    #xinfos_fn也可以是一个形如Action<int>的回调函数,参数0表示当前被点击的Bar的Index
+    def draw(a_datas, a_xinfos_fn=None, positive='red', negative='green'):
         y = a_datas
 
         xp = [i for i in range(0, len(y)) if y[i]>=0]
@@ -21,10 +22,17 @@ class bar:
 
         fig = plt.figure()
         ax1 = fig.add_subplot(111)
-        ax1.bar(xp, yp, 0.35, color=positive, picker=a_xinfos is not None)
-        ax1.bar(xn, yn, 0.35, color=negative, picker=a_xinfos is not None)
+        ax1.bar(xp, yp, 0.35, color=positive, picker=a_xinfos_fn is not None)
+        ax1.bar(xn, yn, 0.35, color=negative, picker=a_xinfos_fn is not None)
 
-        if a_xinfos is not None:
+        if a_xinfos_fn is not None:
+            #创建回调函数
+            if callable(a_xinfos_fn):
+                action = a_xinfos_fn
+            else:
+                def tmp(a_index):
+                    print(a_xinfos_fn[a_index])
+                action = tmp
             for label in ax1.get_xticklabels():  # make the xtick labels pickable
                 label.set_picker(True)
             #定义闭包函数
@@ -33,7 +41,7 @@ class bar:
                     rect = event.artist
                     #matplotlib中Rectangle的x就是index
                     index = rect.get_x()
-                    print(a_xinfos[index])
+                    action(index)
             fig.canvas.mpl_connect('pick_event', _onpick1)
         plt.show()
         return
