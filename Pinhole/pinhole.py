@@ -87,6 +87,6 @@ if __name__ == '__main__':
     except(ValueError,IndexError):
         print 'Usage: %s port newhost [newport]' % sys.argv[0]
         sys.exit(1)
-    sys.stdout = open('pinhole.log','w')
-    Pinhole(port,newhost,newport).start()
+    sys.stdout = open('pinhole.log', 'w')
+    Pinhole(port, newhost, newport).start()
 

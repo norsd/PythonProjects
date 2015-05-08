@@ -6,7 +6,7 @@ from norlib.graphics import *
 datacenter = DataCenter("mongodb://localhost:27017/")
 klinecol = datacenter.IF当月[300]
 
-klines = klinecol.getdatas(20130101, 20140701)
+klines = klinecol.getdatas(20130501, 20140701)
 pairs = [(i,k) for i, k in enumerate(klines) if k.SolidLength>= 15]
 
 indexs, datas=zip(*pairs)
