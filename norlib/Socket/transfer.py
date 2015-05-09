@@ -22,6 +22,11 @@ class Transfer(threading.Thread):
                 data = self.source.recv(1024)
                 if not data:
                     self.fn_peer_closed(self.fn_peer_closed_para, self.source)
-                self.sink.send(data)
+                    break
+                elif not self.sink:
+                    print("没有远端peer可以转发数据,数据被忽略")
+                else:
+                    self.sink.send(data)
             except:
+                print("Transfer ", self.source.getpeername(), " Unexpected error:", sys.exc_info())
                 break
