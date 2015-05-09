@@ -9,40 +9,19 @@ import threading
 
 
 class Transfer(threading.Thread):
-    pipes = []
-    pipeslock = threading.Lock()
-    def __init__(self, source, sink, fn, fnpara):
+    def __init__(self, source, sink, fn, fn_para):
         threading.Thread.__init__(self)
         self.source = source
         self.sink = sink
-        self.pipeslock.acquire()
-        try:
-            self.pipes.append(self)
-        finally:
-            self.pipeslock.release()
-        self.pipeslock.acquire()
-        try:
-            pipes_now = len(self.pipes)
-        finally:
-            self.pipeslock.release()
+        self.fn_peer_closed = fn
+        self.fn_peer_closed_para = fn_para
 
     def run(self):
         while True:
             try:
                 data = self.source.recv(1024)
                 if not data:
-                    break
+                    self.fn_peer_closed(self.fn_peer_closed_para, self.source)
                 self.sink.send(data)
             except:
                 break
-        self.sink.close()
-        self.pipeslock.acquire()
-        try:
-            self.pipes.remove(self)
-        finally:
-            self.pipeslock.release()
-        self.pipeslock.acquire()
-        try:
-            pipes_left = len(self.pipes)
-        finally:
-            self.pipeslock.release()

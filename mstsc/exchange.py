@@ -41,8 +41,8 @@ class Exchange(threading.Thread):
             elif not self.peer1:
                 self.peer1 = s, address
                 print("Peer 1", address)
-                Transfer(self.peer0, self.peer1, _peer_closed, self)
-                Transfer(self.peer1, self.peer0, _peer_closed, self)
+                Transfer(self.peer0, self.peer1, self._peer_closed, self)
+                Transfer(self.peer1, self.peer0, self._peer_closed, self)
                 print("建立通道")
             else:
                 s.close()
