@@ -12,14 +12,14 @@ import threading
 class Transfer(threading.Thread):
     def __init__(self, source, sink, fn, fn_para):
         threading.Thread.__init__(self)
-        if source is tuple:
+        if isinstance(source, tuple):
             self.source = source[0]
             self.sourcename = source[1]
         else:
             self.source = source
             self.sourcename = source.getpeername()
 
-        if sink is tuple:
+        if isinstance(sink, tuple):
             self.sink = sink[0]
             self.sinkname = sink[1]
         else:
@@ -45,5 +45,5 @@ class Transfer(threading.Thread):
                     self.fn_peer_closed(self.fn_peer_closed_para, self.source)
                     break
             except:
-                print("Transfer ", self.source.getpeername(), " Unexpected error:", sys.exc_info())
+                print("Transfer ", self.sourcename, " Unexpected error:", sys.exc_info())
                 break
