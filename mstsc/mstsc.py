@@ -70,6 +70,14 @@ class MstscServer(threading.Thread):
                         self.mstsc = False
                     self.exchange = False
                     continue
+                if e.errno == errno.ECONNABORTED:
+                    print("exchange 你的主机中的软件中止了连接")
+                    if self.mstsc:
+                        print("附带关闭mstsc")
+                        self.mstsc.close()
+                        self.mstsc = False
+                    self.exchange = False
+                    continue
                 elif e.errno == errno.ECONNREFUSED:
                     print("exchange 计算机积极拒绝")
                     continue
