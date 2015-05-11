@@ -54,7 +54,7 @@ class MstscServer(threading.Thread):
                     self.mstsc.connect((self.mstsc_ip, self.mstsc_port))
                     Transfer((self.mstsc, "mstsc"), (self.exchange, "exchange"), self._peer_closed, self).start()
                 self.mstsc.send(datas)
-                print("exchange=>mstsc")
+                #print("exchange=>mstsc")
             except SocketError as e:
                 serr_cnt += 1
                 if e.errno == errno.ECONNRESET:
