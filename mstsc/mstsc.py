@@ -28,6 +28,7 @@ class MstscServer(threading.Thread):
         serr_max = 5
         #休眠3秒
         slp_sec = 3
+        rok = False
         while True:
             try:
                 if not self.exchange:
@@ -35,6 +36,7 @@ class MstscServer(threading.Thread):
                         print("错误数超过", serr_max, "休眠", slp_sec)
                         time.sleep(slp_sec)
                     print("准备连接 exchange")
+                    rok = False
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     s.connect(self.exchange_address)
                     self.exchange = s
@@ -48,6 +50,9 @@ class MstscServer(threading.Thread):
                     self.exchange = False
                     print("已关闭mstsc链接")
                     continue
+                if not rok:
+                    rok = True
+                    print("与exchange的连接已经收到数据")
                 if not self.mstsc:
                     print("建立mstsc")
                     self.mstsc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
