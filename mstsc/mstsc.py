@@ -40,15 +40,7 @@ class MstscServer(threading.Thread):
     @staticmethod
     def _peer_closed(a_exchange, a_peer):
         print("fuck!!")
-        self = a_exchange
-        if self.peer0 == a_peer:
-            self.peer0 = False
-            print("Peer0 关闭")
-        elif self.peer1 == a_peer:
-            self.peer1 = False
-            print("Peer1 关闭")
-        else:
-            print("无法识别的Peer关闭:", a_peer)
+        print("链接关闭!")
 
 if __name__ == '__main__':
 
