@@ -69,7 +69,7 @@ class MstscServer(threading.Thread):
                     print("exchange 计算机积极拒绝")
                     continue
                 elif e.errno == errno.ETIMEDOUT:
-                    print("eschange 连接超时")
+                    print("exchange 连接超时")
                     continue
                 elif e.errno == errno.ENOTSOCK:
                     print("exchange 非法套接字操作, 服务停止, 可能是要求一个已经关闭的套接字发送数据:", sys.exc_info())
