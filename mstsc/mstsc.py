@@ -35,6 +35,7 @@ class MstscServer(threading.Thread):
                 print("exchange=>mstsc")
             except:
                 print("Unexpected error:", sys.exc_info())
+                break
 
     @staticmethod
     def _peer_closed(a_exchange, a_peer):
@@ -50,11 +51,11 @@ class MstscServer(threading.Thread):
             print("无法识别的Peer关闭:", a_peer)
 
 if __name__ == '__main__':
-    print(GetIps())
-    print('Start mstsc')
+
     exchange_ip = "101.95.130.218"
     exchange_port = 6503
     exchange_address = "101.95.130.218:6503"
-    mstsc_ip = "10.10.40.193"
+    mstsc_ip = GetIps()[0]
+    print('Start mstsc: ', mstsc_ip)
     mstsc_port = 3389
     MstscServer((exchange_ip, exchange_port), mstsc_ip, mstsc_port).start()
