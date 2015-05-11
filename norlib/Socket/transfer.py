@@ -27,6 +27,7 @@ class Transfer(threading.Thread):
             self.sinkname = "sink"
         self.fn_peer_closed = fn
         self.fn_peer_closed_para = fn_para
+        self.ShowData = False
 
     def run(self):
         while True:
@@ -39,7 +40,8 @@ class Transfer(threading.Thread):
                     print("没有远端peer可以转发数据,数据被忽略")
                 else:
                     self.sink.send(data)
-                    print(self.sourcename, "=>", self.sinkname)
+                    if self.ShowData:
+                        print(self.sourcename, "=>", self.sinkname)
             except SocketError as e:
                 if e.errno == errno.ECONNRESET:
                     self.fn_peer_closed(self.fn_peer_closed_para, self.source)

@@ -46,7 +46,10 @@ class Exchange(threading.Thread):
                 if self.peer1:
                     print("来自外部的地址要求链接mstsc,关闭先前连入mstsc的链接")
                     self.peer1.close()
-                    self.peer0.close()
+                    self.peer1 = False
+                    if self.peer0:
+                        self.peer0.close()
+                        self.peer0 = False
                 self.peer1 = s
                 print("Peer1 ", address)
                 self.__transfer1 = Transfer(self.peer1, self.peer0, self._peer_closed, self)
