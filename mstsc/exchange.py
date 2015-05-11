@@ -61,15 +61,17 @@ class Exchange(threading.Thread):
         if self.peer0 == a_peer:
             self.peer0 = False
             print("Peer0 关闭")
-            self.peer1.close()
-            self.peer1 = False
-            print("Peer1 附带关闭")
+            if self.peer1:
+                self.peer1.close()
+                self.peer1 = False
+                print("Peer1 附带关闭")
         elif self.peer1 == a_peer:
             self.peer1 = False
             print("Peer1 关闭")
-            self.peer0.close()
-            self.peer0 = False
-            print("Peer0 附带关闭")
+            if self.peer0:
+                self.peer0.close()
+                self.peer0 = False
+                print("Peer0 附带关闭")
         else:
             print("无法识别的Peer关闭:", a_peer)
 
