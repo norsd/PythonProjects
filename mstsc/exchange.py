@@ -71,4 +71,5 @@ if __name__ == '__main__':
     print('Start Exchange')
     #port = int(sys.argv[1])
     port = 6503
-    Exchange(port).start()
+    mstsc_internet_ip = "119.254.227.106"
+    Exchange(port, mstsc_internet_ip).start()
