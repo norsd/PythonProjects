@@ -29,6 +29,7 @@ class MstscServer(threading.Thread):
         #休眠3秒
         slp_sec = 3
         rok = False
+        transfer = False
         while True:
             try:
                 if not self.exchange:
@@ -57,7 +58,10 @@ class MstscServer(threading.Thread):
                     print("建立mstsc")
                     self.mstsc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     self.mstsc.connect((self.mstsc_ip, self.mstsc_port))
-                    Transfer((self.mstsc, "mstsc"), (self.exchange, "exchange"), self._peer_closed, self).start()
+                    if transfer:
+                        transfer.Close = True
+                    transfer = Transfer((self.mstsc, "mstsc"), (self.exchange, "exchange"), self._peer_closed, self)
+                    transfer.start()
                 self.mstsc.send(datas)
                 #print("exchange=>mstsc")
             except SocketError as e:
