@@ -30,7 +30,8 @@ class Exchange(threading.Thread):
     def run(self):
         while True:
             s, address = self.exchange_ls.accept()
-            if address == self.mstsc_internet_ip:
+            # address: [ip, port]
+            if address[0] == self.mstsc_internet_ip:
                 if self.peer0:
                     print("来自mstsc的地址再次请求链接,关闭先前的链接")
                     self.peer0.close()
