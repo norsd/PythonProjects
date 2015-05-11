@@ -39,18 +39,19 @@ class Exchange(threading.Thread):
                 print("Peer0 ", address)
                 self.__transfer0 = Transfer(self.peer0, self.peer1, self._peer_closed, self)
                 self.__transfer0.start()
-                if self.__transfer1:
+                if self.peer1:
                     self.__transfer1.sink = s
                     print("建立通道")
             else:
                 if self.peer1:
                     print("来自外部的地址要求链接mstsc,关闭先前连入mstsc的链接")
                     self.peer1.close()
+                    self.peer0.close()
                 self.peer1 = s
                 print("Peer1 ", address)
                 self.__transfer1 = Transfer(self.peer1, self.peer0, self._peer_closed, self)
                 self.__transfer1.start()
-                if self.__transfer0:
+                if self.peer0:
                     self.__transfer0.sink = s
                     print("建立通道")
 
@@ -60,9 +61,15 @@ class Exchange(threading.Thread):
         if self.peer0 == a_peer:
             self.peer0 = False
             print("Peer0 关闭")
+            self.peer1.close()
+            self.peer1 = False
+            print("Peer1 附带关闭")
         elif self.peer1 == a_peer:
             self.peer1 = False
             print("Peer1 关闭")
+            self.peer0.close()
+            self.peer0 = False
+            print("Peer0 附带关闭")
         else:
             print("无法识别的Peer关闭:", a_peer)
 
@@ -73,4 +80,5 @@ if __name__ == '__main__':
     #port = int(sys.argv[1])
     port = 6503
     mstsc_internet_ip = "119.254.227.106"
+    mstsc_internet_ip = "101.95.130.222"
     Exchange(port, mstsc_internet_ip).start()
