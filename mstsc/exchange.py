@@ -16,8 +16,9 @@ from norlib.Socket.transfer import *
 
 
 class Exchange(threading.Thread):
-    def __init__(self, a_port):
+    def __init__(self, a_port, a_mstsc_internet_ip):
         threading.Thread.__init__(self)
+        self.mstsc_internet_ip = a_mstsc_internet_ip
         self.exchange_ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.exchange_ls.bind(('', a_port))
         self.exchange_ls.listen(5)
@@ -29,7 +30,10 @@ class Exchange(threading.Thread):
     def run(self):
         while True:
             s, address = self.exchange_ls.accept()
-            if not self.peer0:
+            if address == self.mstsc_internet_ip:
+                if self.peer0:
+                    print("来自mstsc的地址再次请求链接,关闭先前的链接")
+                    self.peer0.close()
                 self.peer0 = s
                 print("Peer0 ", address)
                 self.__transfer0 = Transfer(self.peer0, self.peer1, self._peer_closed, self)
@@ -37,7 +41,10 @@ class Exchange(threading.Thread):
                 if self.__transfer1:
                     self.__transfer1.sink = s
                     print("建立通道")
-            elif not self.peer1:
+            else:
+                if self.peer1:
+                    print("来自外部的地址要求链接mstsc,关闭先前连入mstsc的链接")
+                    self.peer1.close()
                 self.peer1 = s
                 print("Peer1 ", address)
                 self.__transfer1 = Transfer(self.peer1, self.peer0, self._peer_closed, self)
@@ -45,9 +52,6 @@ class Exchange(threading.Thread):
                 if self.__transfer0:
                     self.__transfer0.sink = s
                     print("建立通道")
-            else:
-                s.close()
-                print("Peer已经达到上限,新加入的Peer被拒绝:", address)
 
     @staticmethod
     def _peer_closed(a_exchange, a_peer):

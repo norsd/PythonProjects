@@ -7,6 +7,7 @@ import socket
 import time
 import threading
 from norlib.Socket.transfer import *
+from norlib.Socket.Ip import *
 
 
 class MstscServer(threading.Thread):
@@ -49,6 +50,7 @@ class MstscServer(threading.Thread):
             print("无法识别的Peer关闭:", a_peer)
 
 if __name__ == '__main__':
+    print(GetIps())
     print('Start mstsc')
     exchange_ip = "101.95.130.218"
     exchange_port = 6503
