@@ -28,11 +28,12 @@ class Transfer(threading.Thread):
         self.fn_peer_closed = fn
         self.fn_peer_closed_para = fn_para
         self.ShowData = False
+        self.Close = False
 
     def run(self):
-        while True:
+        while not self.Close:
             try:
-                data = self.source.recv(1024)
+                data = self.source.recv(102400)
                 if not data:
                     self.fn_peer_closed(self.fn_peer_closed_para, self.source)
                     break
@@ -49,3 +50,5 @@ class Transfer(threading.Thread):
             except:
                 print("Transfer ", self.sourcename, " Unexpected error:", sys.exc_info())
                 break
+        print("thread exit")
+        return

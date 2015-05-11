@@ -37,6 +37,8 @@ class Exchange(threading.Thread):
                     self.peer0.close()
                 self.peer0 = s
                 print("Peer0 ", address)
+                if self.__transfer0:
+                    self.__transfer0.Close = True
                 self.__transfer0 = Transfer(self.peer0, self.peer1, self._peer_closed, self)
                 self.__transfer0.start()
                 if self.peer1:
@@ -52,6 +54,8 @@ class Exchange(threading.Thread):
                         self.peer0 = False
                 self.peer1 = s
                 print("Peer1 ", address)
+                if self.__transfer1:
+                    self.__transfer1.Close = True
                 self.__transfer1 = Transfer(self.peer1, self.peer0, self._peer_closed, self)
                 self.__transfer1.start()
                 if self.peer0:
