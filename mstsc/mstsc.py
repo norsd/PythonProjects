@@ -70,7 +70,6 @@ class MstscServer(threading.Thread):
                     continue
                 else:
                     print("exchange 长时间没有数据发送,中止随后重新连接")
-                    self.exchange.shutdown()
                     self.exchange.close()
                     self.exchange = False
                     continue
