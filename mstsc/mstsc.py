@@ -40,6 +40,7 @@ class MstscServer(threading.Thread):
                     rok = False
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     s.connect(self.exchange_address)
+                    s.settimeout(20.0)
                     self.exchange = s
                     serr_cnt = 0
                     print("已连接 exchange")
