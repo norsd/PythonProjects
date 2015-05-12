@@ -64,7 +64,6 @@ class MstscServer(threading.Thread):
                     transfer = Transfer((self.mstsc, "mstsc"), (self.exchange, "exchange"), self._peer_closed, self)
                     transfer.start()
                 self.mstsc.send(datas)
-                #print("exchange=>mstsc")
             except socket.timeout:
                 if rok:
                     continue
@@ -98,8 +97,17 @@ class MstscServer(threading.Thread):
                     print("exchange 连接超时")
                     continue
                 elif e.errno == errno.ENOTSOCK:
-                    print("exchange 非法套接字操作, 服务停止, 可能是要求一个已经关闭的套接字发送数据:", sys.exc_info())
-                    break
+                    print("exchange 非法套接字操作, 可能是要求一个已经关闭的套接字发送数据:", sys.exc_info())
+                    #发生这个异常可能是mstsc自动关闭(有外部新连接mstsc,所以老连接被关闭)后
+                    #exchange有消息收到后转发mstsc发生此异常
+                    #我们等待3秒后,检查self.exchange与self.mstsc是否已被_peer_closed函数重置
+                    time.sleep(3)
+                    if not self.exchange and not self.mstsc:
+                        continue
+                    else:
+                        print("exchange 非法套接字操作发生3秒后, 相关变量仍然没有被重置, 服务中止")
+                        break
+
                 else:
                     print("其他SocketError:", e, " No.:", e.errno)
                     print("无法处理此错误,中断服务")
