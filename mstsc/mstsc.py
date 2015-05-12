@@ -40,7 +40,7 @@ class MstscServer(threading.Thread):
                     rok = False
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     s.connect(self.exchange_address)
-                    s.settimeout(20.0)
+                    s.settimeout(60.0)
                     self.exchange = s
                     serr_cnt = 0
                     print("已连接 exchange")
@@ -75,7 +75,7 @@ class MstscServer(threading.Thread):
                         self.mstsc = False
                     self.exchange = False
                     continue
-                if e.errno == errno.ECONNABORTED:
+                elif e.errno == errno.ECONNABORTED:
                     print("exchange 你的主机中的软件中止了连接")
                     if self.mstsc:
                         print("附带关闭mstsc")
@@ -83,6 +83,16 @@ class MstscServer(threading.Thread):
                         self.mstsc = False
                     self.exchange = False
                     continue
+                elif e.errno == errno.ETIMEDOUT:
+                    if rok:
+                        serr_cnt -= 1
+                        continue
+                    else:
+                        print("exchange 长时间没有数据发送,中止随后重新连接")
+                        self.exchange.shutdown()
+                        self.exchange.close()
+                        self.exchange = False
+                        continue
                 elif e.errno == errno.ECONNREFUSED:
                     print("exchange 计算机积极拒绝")
                     continue
