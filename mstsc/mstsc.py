@@ -40,7 +40,7 @@ class MstscServer(threading.Thread):
                     rok = False
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     s.connect(self.exchange_address)
-                    s.settimeout(60.0)
+                    s.settimeout(20.0)
                     self.exchange = s
                     serr_cnt = 0
                     print("已连接 exchange")
@@ -103,7 +103,7 @@ class MstscServer(threading.Thread):
                     print("exchange 非法套接字操作, 服务停止, 可能是要求一个已经关闭的套接字发送数据:", sys.exc_info())
                     break
                 else:
-                    print("其他SocketError:", e)
+                    print("其他SocketError:", e, " No.:", e.errno)
                     print("无法处理此错误,中断服务")
                     break
             except:
