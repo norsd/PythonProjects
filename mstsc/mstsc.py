@@ -83,16 +83,6 @@ class MstscServer(threading.Thread):
                         self.mstsc = False
                     self.exchange = False
                     continue
-                elif e.errno == errno.ETIMEDOUT:
-                    if rok:
-                        serr_cnt -= 1
-                        continue
-                    else:
-                        print("exchange 长时间没有数据发送,中止随后重新连接")
-                        self.exchange.shutdown()
-                        self.exchange.close()
-                        self.exchange = False
-                        continue
                 elif e.errno == errno.ECONNREFUSED:
                     print("exchange 计算机积极拒绝")
                     continue
@@ -106,6 +96,15 @@ class MstscServer(threading.Thread):
                     print("其他SocketError:", e, " No.:", e.errno)
                     print("无法处理此错误,中断服务")
                     break
+            except socket.timeout:
+                if rok:
+                    continue
+                else:
+                    print("exchange 长时间没有数据发送,中止随后重新连接")
+                    self.exchange.shutdown()
+                    self.exchange.close()
+                    self.exchange = False
+                    continue
             except:
                 print("Unexpected error:", sys.exc_info())
                 break
