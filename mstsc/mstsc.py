@@ -22,11 +22,11 @@ class MstscServer(threading.Thread):
         self.mstsc_port = a_mstsc_port
 
     def run(self):
-        #socket error count
+        # socket error count
         serr_cnt = 0
-        #超过serr_max之后开始休眠
+        # 超过serr_max之后开始休眠
         serr_max = 5
-        #休眠3秒
+        # 休眠3秒
         slp_sec = 3
         rok = False
         transfer = False
@@ -37,6 +37,7 @@ class MstscServer(threading.Thread):
                         print("错误数超过", serr_max, "休眠", slp_sec)
                         time.sleep(slp_sec)
                     print("准备连接 exchange")
+                    # 表示是否接受到过数据
                     rok = False
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                     s.connect(self.exchange_address)
@@ -47,8 +48,13 @@ class MstscServer(threading.Thread):
                 datas = self.exchange.recv(1024)
                 if not datas:
                     print("远端链接关闭,准备关闭mstsc链接")
-                    self.mstsc.close()
-                    self.mstsc = False
+                    if not self.mstsc:
+                        # self.mstsc已经成为了False
+                        zero = 0
+                    else:
+                        self.mstsc.close()
+                        self.mstsc = False
+                    # 设置exchange = False准备下次链接
                     self.exchange = False
                     print("已关闭mstsc链接")
                     continue
@@ -98,9 +104,9 @@ class MstscServer(threading.Thread):
                     continue
                 elif e.errno == errno.ENOTSOCK:
                     print("exchange 非法套接字操作, 可能是要求一个已经关闭的套接字发送数据:", sys.exc_info())
-                    #发生这个异常可能是mstsc自动关闭(有外部新连接mstsc,所以老连接被关闭)后
-                    #exchange有消息收到后转发mstsc发生此异常
-                    #我们等待3秒后,检查self.exchange与self.mstsc是否已被_peer_closed函数重置
+                    # 发生这个异常可能是mstsc自动关闭(有外部新连接mstsc,所以老连接被关闭)后
+                    # exchange有消息收到后转发mstsc发生此异常
+                    # 我们等待3秒后,检查self.exchange与self.mstsc是否已被_peer_closed函数重置
                     time.sleep(3)
                     if not self.exchange and not self.mstsc:
                         continue
