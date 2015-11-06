@@ -129,8 +129,12 @@ class MstscServer(threading.Thread):
         self = a_exchange
         self.exchange.close()
         self.exchange = False
-        self.mstsc.close()
-        self.mstsc = False
+        if self.mstsc:
+            self.mstsc.close()
+            self.mstsc = False
+        else:
+            print("self.mstsc = ", self.mstsc)
+            self.mstsc = False
 
 if __name__ == '__main__':
 
