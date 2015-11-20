@@ -89,9 +89,6 @@ class Exchange(threading.Thread):
 
 if __name__ == '__main__':
     print('Start Exchange')
-    #port = int(sys.argv[1])
-    port = 6503
+    port = 6505
     mstsc_internet_ip = "106.39.95.34"
-    #mstsc_internet_ip = "119.254.227.106"
-    #mstsc_internet_ip = "101.95.130.222"
     Exchange(port, mstsc_internet_ip).start()
