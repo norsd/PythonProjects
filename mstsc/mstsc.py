@@ -75,7 +75,11 @@ class MstscServer(threading.Thread):
                     continue
                 else:
                     print("exchange 长时间没有数据发送,中止随后重新连接")
-                    self.exchange.close()
+                    try:
+                        self.exchange.close()
+                    except e:
+                        print("执行self.exchange.close()异常:", e)
+                        print("认为此异常可以内部吞噬")
                     self.exchange = False
                     continue
             except SocketError as e:
