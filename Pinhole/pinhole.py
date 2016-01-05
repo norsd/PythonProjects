@@ -5,7 +5,7 @@ import socket
 import time
 import threading
 from norlib.Socket.Ip import *
-
+from socket import error as SocketError
 
 # 主功能类
 # 此类一般用于内网机器通过一台有外网权限的内网服务器连接到外网
@@ -31,7 +31,10 @@ class Pinhole(threading.Thread):
             new_port_sock, address = self.sock.accept()
             log('Creating new session for %s:%s', *address)
             ori_port_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            ori_port_sock.connect((self.__oriIp, self.__oriPort))
+            try:
+                ori_port_sock.connect((self.__oriIp, self.__oriPort))
+            except SocketError as e:
+                continue
             # new_port_sock收到的数据 发送到 ori_port_sock(外网）
             pth0 = PipeThread(new_port_sock, ori_port_sock)
             # ori_port_sock发来的数据 发送到 new_port_sock(内网机器)
