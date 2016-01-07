@@ -131,20 +131,28 @@ class MstscServer(threading.Thread):
         print("mstsc链接关闭!")
         print("关闭与exchange的链接")
         self = a_exchange
-        self.exchange.close()
+        try:
+            self.exchange.close()
+        except:
+            print("_peer_closed self.exchange.close() Unexpected error:", sys.exc_info())
         self.exchange = False
         if self.mstsc:
-            self.mstsc.close()
+            try:
+                self.mstsc.close()
+            except:
+                print("_peer_closed self.mstsc.close() Unexpected error:", sys.exc_info())
             self.mstsc = False
         else:
             print("self.mstsc = ", self.mstsc)
             self.mstsc = False
 
+
+
 if __name__ == '__main__':
 
     exchange_ip = "101.95.130.218"
-    exchange_port = 6503
-    exchange_address = "101.95.130.218:6503"
+    exchange_port = 6507
+    exchange_address = "101.95.130.218:6507"
     mstsc_ip = GetIps()[0]
     print('Start mstsc: ', mstsc_ip)
     mstsc_port = 3389
