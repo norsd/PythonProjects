@@ -25,3 +25,26 @@ def create_data_set():
     labels = ['A', 'A', 'B', 'B']
     return group, labels
 
+
+def file_to_matrix(a_filename):
+    fr = open(a_filename)
+    f_lines = fr.readlines()
+    f_length = len(f_lines)
+    ret_mat = zeros((f_length, 3))
+    class_label_vector = []
+    index = 0
+    dt_label = {}
+    for line in f_lines:
+        line = line.strip()
+        sub_lines = line.split('\t')
+        ret_mat[index, :] = sub_lines[0:3]
+        set_value(dt_label, sub_lines[-1], len(dt_label))
+        class_label_vector.append(dt_label[sub_lines[-1]])
+        index += 1
+    return ret_mat, class_label_vector
+
+
+def set_value(self, key, data):
+    if key not in self:
+        self[key] = data
+    return
