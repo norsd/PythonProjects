@@ -54,7 +54,7 @@ def file_to_matrix(a_filename):
         # 只记录前3项数据,分别为:飞行常客里程数, 玩视屏游戏消耗时间, 每周消费冰淇淋公升数
         ret_mat[index, :] = sub_lines[0:3]
         label = sub_lines[-1]
-        set_value(dt_label, label, len(dt_label))
+        set_value(dt_label, label, len(dt_label)+1)
         vt_label.append(dt_label[label])
         index += 1
     return ret_mat, vt_label
@@ -76,5 +76,9 @@ def run_helper():
     import matplotlib.pyplot as plt
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(a[:, 1], a[:, 2], 15.0*array(b), 15.0*array(b))
+    ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
     plt.show()
+
+
+if __name__ == '__main__':
+    run_helper()
