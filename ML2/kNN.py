@@ -62,7 +62,7 @@ def file_to_matrix(a_filename):
         set_value(dt_label, label, len(dt_label)+1)
         vt_label.append(dt_label[label])
         index += 1
-    ret_descs = dt_label.keys()
+    ret_descs = dt_label
     return ret_mat, vt_label, ret_descs
 
 
@@ -77,7 +77,7 @@ def set_value(self, key, data):
 def run_helper():
     import os
     os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
-    a, b, desc = file_to_matrix("datingTestSet.txt")
+    a, label_numbers, dt_desc = file_to_matrix("datingTestSet.txt")
     import matplotlib
     import matplotlib.pyplot as plt
     fig = plt.figure()
@@ -90,11 +90,14 @@ def run_helper():
     # 对每个label*15得到颜色
     # 缺点是无法分类
     # ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
-    xs = [v for (i, v) in enumerate(a[:, 0]) if b[i] == 1]
-    ys = [v for (i, v) in enumerate(a[:, 1]) if b[i] == 1]
-    ax.scatter(xs, ys, 15, "red")
-    #ax.legend((teat, ), ("red", "green"))
-
+    hs = []
+    for (desc, label_number) in dt_desc.items():
+        xs = [v for (i, v) in enumerate(a[:, 0]) if label_numbers[i] == label_number]
+        ys = [v for (i, v) in enumerate(a[:, 1]) if label_numbers[i] == label_number]
+        scolor = "#{0:06X}".format(random.randint(0, 0xFFFFFF))
+        h = ax.scatter(xs, ys, 15.0, color=scolor)
+        hs.append((h,desc))
+    ax.legend([h[0] for h in hs], [h[1] for h in hs])
     plt.show()
 
 
