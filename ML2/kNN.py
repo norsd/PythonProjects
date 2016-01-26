@@ -1,6 +1,11 @@
 # coding:utf-8
+from matplotlib.font_manager import FontProperties
 from numpy import *
+import matplotlib.pyplot as plt
+import os
 import operator
+font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), size=14)
+
 
 __author__ = 'norsd@163.com'
 
@@ -57,7 +62,8 @@ def file_to_matrix(a_filename):
         set_value(dt_label, label, len(dt_label)+1)
         vt_label.append(dt_label[label])
         index += 1
-    return ret_mat, vt_label
+    vt_desc = dt_label.keys()
+    return ret_mat, vt_label, vt_desc
 
 
 # 添加data到dictionary中当key尚未存在时
@@ -71,12 +77,17 @@ def set_value(self, key, data):
 def run_helper():
     import os
     os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
-    a, b = file_to_matrix("datingTestSet.txt")
+    a, b, desc = file_to_matrix("datingTestSet.txt")
     import matplotlib
     import matplotlib.pyplot as plt
     fig = plt.figure()
+    plt.xlabel("测试", fontproperties=font)
+    plt.ylabel("ABC")
     ax = fig.add_subplot(111)
-    ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
+    test = ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
+    ax.legend(test, "red")
+
+    ax.legend
     plt.show()
 
 
