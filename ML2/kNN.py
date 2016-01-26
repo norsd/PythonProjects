@@ -63,7 +63,7 @@ def file_to_matrix(a_filename):
         vt_label.append(dt_label[label])
         index += 1
     ret_descs = dt_label
-    return ret_mat, vt_label, ret_descs
+    return ret_mat, vt_label, ret_descs, ["飞行常客里程数", "玩视屏游戏消耗时间", "每周消费冰淇淋公升数"]
 
 
 # 添加data到dictionary中当key尚未存在时
@@ -77,12 +77,10 @@ def set_value(self, key, data):
 def run_helper():
     import os
     os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
-    a, label_numbers, dt_desc = file_to_matrix("datingTestSet.txt")
+    a, label_numbers, dt_desc, columns = file_to_matrix("datingTestSet.txt")
     import matplotlib
     import matplotlib.pyplot as plt
     fig = plt.figure()
-    plt.xlabel("测试", fontproperties=font)
-    plt.ylabel("ABC")
     ax = fig.add_subplot(111)
     # 下面的语句快速绘画数据点
     # labels存储了每种数据（例如"飞行常客里程数")对应的非0整数
@@ -91,13 +89,17 @@ def run_helper():
     # 缺点是无法分类
     # ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
     hs = []
+    xi = 0
+    yi = 1
     for (desc, label_number) in dt_desc.items():
-        xs = [v for (i, v) in enumerate(a[:, 0]) if label_numbers[i] == label_number]
-        ys = [v for (i, v) in enumerate(a[:, 1]) if label_numbers[i] == label_number]
+        xs = [v for (i, v) in enumerate(a[:, xi]) if label_numbers[i] == label_number]
+        ys = [v for (i, v) in enumerate(a[:, yi]) if label_numbers[i] == label_number]
         scolor = "#{0:06X}".format(random.randint(0, 0xFFFFFF))
         h = ax.scatter(xs, ys, 15.0, color=scolor)
         hs.append((h,desc))
     ax.legend([h[0] for h in hs], [h[1] for h in hs])
+    plt.xlabel(columns[xi], fontproperties=font)
+    plt.ylabel(columns[yi], fontproperties=font)
     plt.show()
 
 
