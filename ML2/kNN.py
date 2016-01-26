@@ -62,8 +62,8 @@ def file_to_matrix(a_filename):
         set_value(dt_label, label, len(dt_label)+1)
         vt_label.append(dt_label[label])
         index += 1
-    vt_desc = dt_label.keys()
-    return ret_mat, vt_label, vt_desc
+    ret_descs = dt_label.keys()
+    return ret_mat, vt_label, ret_descs
 
 
 # 添加data到dictionary中当key尚未存在时
@@ -84,10 +84,17 @@ def run_helper():
     plt.xlabel("测试", fontproperties=font)
     plt.ylabel("ABC")
     ax = fig.add_subplot(111)
-    test = ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
-    ax.legend(test, "red")
+    # 下面的语句快速绘画数据点
+    # labels存储了每种数据（例如"飞行常客里程数")对应的非0整数
+    # 对每个label*15得到形状
+    # 对每个label*15得到颜色
+    # 缺点是无法分类
+    # ax.scatter(a[:, 0], a[:, 1], 15.0*array(b), 15.0*array(b))
+    xs = [v for (i, v) in enumerate(a[:, 0]) if b[i] == 1]
+    ys = [v for (i, v) in enumerate(a[:, 1]) if b[i] == 1]
+    ax.scatter(xs, ys, 15, "red")
+    #ax.legend((teat, ), ("red", "green"))
 
-    ax.legend
     plt.show()
 
 
