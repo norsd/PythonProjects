@@ -73,11 +73,23 @@ def set_value(self, key, data):
     return
 
 
+def auto_norm(set_data):
+    min = set_data.min()
+    max = set_data.max()
+    ranges = max - min
+    set_norm = zeros(shape(set_data))
+    m = set_data.shape[0]
+    set_norm = set_data - tile(min, (m, 1))
+    return set_norm, ranges, min
+
+
 # 快速运行函数
 def run_helper():
     import os
     os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
     a, label_numbers, dt_desc, columns = file_to_matrix("datingTestSet.txt")
+    norm = auto_norm(a)
+    print(norm)
     import matplotlib
     import matplotlib.pyplot as plt
     fig = plt.figure()
