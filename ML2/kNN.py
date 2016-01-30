@@ -11,6 +11,33 @@ __author__ = 'norsd@163.com'
 
 
 def classify0(inx, data_set, labels, k):
+    """
+    [data0, data1, ...]
+    与
+    {
+    [data0, data1, ...]
+    [data0, data1, ...]
+    ...
+    }
+    分别计算index.data0 与data_set.data0s的距离
+    分别计算index.data1 与data_set.data1s的距离
+    @param inx: 一个没有分类的一行数据集合[data0, data1, ...]
+    @param data_set:一个已经分类的多行数据集合
+                    {
+                        [data0, data1, ...]
+                        [data0, data1, ...]
+                        ...
+                    }
+    @param labels:data_set的每一行数据的分类结果,每一个数字表示一个分类
+                    [
+                        1,
+                        15,
+                        82,
+                        ...
+                    ]
+    @param k:从data_set中选取与inx距离最小的k个点
+    @return:返回根据data_set预测inx属于哪一个分类
+    """
     data_set_size = data_set.shape[0]
     # numpy.tile
     diff_mat = tile(inx, (data_set_size, 1)) - data_set
@@ -74,14 +101,24 @@ def set_value(self, key, data):
 
 
 def auto_norm(set_data):
-    min = set_data.min()
-    max = set_data.max()
-    ranges = max - min
+    min_value = set_data.min()
+    max_value = set_data.max()
+    ranges = max_value - min_value
     set_norm = zeros(shape(set_data))
     m = set_data.shape[0]
-    set_norm = set_data - tile(min, (m, 1))
-    return set_norm, ranges, min
+    set_norm = set_data - tile(min_value, (m, 1))
+    return set_norm, ranges, min_value
 
+
+def dating_class_test():
+    hot_ratio = 0.1
+    mat_dating, vt_labels, c, d = file_to_matrix("datingTestSet.txt")
+    mat_norm, ranges, min_values = auto_norm(mat_dating)
+    m = mat_norm.shape[0]
+    num_test_vecs = int(m*hot_ratio)
+    error_count = 0.0
+    for i in range(num_test_vecs):
+        classifier_result = classify0(mat_norm[i, :], mat_norm[num_test_vecs:m, :], vt_labels[num_test_vecs:m], 3)
 
 # 快速运行函数
 def run_helper():
