@@ -4,6 +4,7 @@ from numpy import *
 import matplotlib.pyplot as plt
 import os
 import operator
+import zipfile
 font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), size=14)
 
 
@@ -21,13 +22,23 @@ def classify0(inx, data_set, labels, k):
     }
     分别计算index.data0 与data_set.data0s的距离
     分别计算index.data1 与data_set.data1s的距离
-    @param inx: 一个没有分类的一行数据集合[data0, data1, ...]
+    @param inx: 一个没有分类的一行数据集合[data0, data1, ...],
+                    data0 表示一种特性0的量化值(例如：每年飞机里程数),
+                    data1 表示一种特性1的量化值(例如: 每年玩游戏的小时数),
+                    data2 ........
+                    我们希望根据所有参数,最后函数告诉我们这个数据集合可以被认为符合哪一个label
+                    注意应该对每一个特性的量化值事先做好归一化
     @param data_set:一个已经分类的多行数据集合
                     {
-                        [data0, data1, ...]
-                        [data0, data1, ...]
+                        [data0, data1, ...]  <---0行
+                        [data0, data1, ...]  <---1行
                         ...
                     }
+                    已经分类的含义是，对于i行的数据，其中的
+                    data_set[i]: [data0, data1, ...]
+                    他的分类值为 labels[i]
+                    例如 labels[i] == 3
+                    3也许表示"非常喜欢"或者其他值
     @param labels:data_set的每一行数据的分类结果,每一个数字表示一个分类
                     [
                         1,
@@ -39,7 +50,14 @@ def classify0(inx, data_set, labels, k):
     @return:返回根据data_set预测inx属于哪一个分类
     """
     data_set_size = data_set.shape[0]
-    # numpy.tile
+    # 将inx [data0, data1, ...]
+    # 复制为
+    # {
+    #     [data0, data1, ...]
+    #     [data0, data1, ...]
+    #     ...
+    # }
+    # 行数与data_set_size一致
     diff_mat = tile(inx, (data_set_size, 1)) - data_set
     sq_diff_mat = diff_mat ** 2
     sq_distances = sq_diff_mat.sum(axis=1)
@@ -56,6 +74,7 @@ def create_data_set():
     group = array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
     labels = ['A', 'A', 'B', 'B']
     return group, labels
+
 
 
 # 文件格式如下:
@@ -110,6 +129,7 @@ def auto_norm(set_data):
     return set_norm, ranges, min_value
 
 
+#
 def dating_class_test():
     hot_ratio = 0.1
     mat_dating, vt_labels, c, d = file_to_matrix("datingTestSet.txt")
@@ -119,6 +139,16 @@ def dating_class_test():
     error_count = 0.0
     for i in range(num_test_vecs):
         classifier_result = classify0(mat_norm[i, :], mat_norm[num_test_vecs:m, :], vt_labels[num_test_vecs:m], 3)
+        print("the classifier came back with: %d, the reaql answer is: %d", classifier_result, vt_labels[i])
+        if classifier_result != vt_labels[i] :
+            error_count += 1.0
+    print("The total error rate is: %f", error_count/float(num_test_vecs))
+
+
+def read_zip(a_relative_path):
+    z = zipfile.ZipFile("digits.zip", "r")
+    print(z.namelist())
+
 
 # 快速运行函数
 def run_helper():
