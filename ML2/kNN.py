@@ -2,6 +2,7 @@
 from matplotlib.font_manager import FontProperties
 from numpy import *
 import matplotlib.pyplot as plt
+from typing import Tuple
 from typing import List
 import os
 import operator
@@ -72,7 +73,7 @@ def classify0(inx: ndarray, data_set: ndarray, labels: list, k: int):
     return sorted_class_count[0][0]
 
 
-def auto_norm(set_data)-> tuple[ndarray, float, float]:
+def auto_norm(set_data)-> Tuple[ndarray, float, float]:
     """
     把数据集归一
     @param set_data:
@@ -87,7 +88,7 @@ def auto_norm(set_data)-> tuple[ndarray, float, float]:
     return set_norm, ranges, min_value
 
 
-def file_to_matrix(a_filename: str)-> tuple[ndarray, list, dict, list[str]]:
+def file_to_matrix(a_filename: str)-> Tuple[ndarray, list, dict, List[str]]:
     """
     将一个特定格式文件转化为matrix
                     40920	        8.326976	        0.953952	        largeDoses
