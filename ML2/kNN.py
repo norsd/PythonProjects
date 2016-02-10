@@ -4,6 +4,7 @@ from numpy import *
 import matplotlib.pyplot as plt
 from typing import Tuple
 from typing import List
+from typing import TypeVar
 import os
 import operator
 import zipfile
@@ -13,8 +14,11 @@ font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), si
 
 __author__ = 'norsd@163.com'
 
+# 定义泛型
+T = TypeVar('T')
 
-def classify0(inx: ndarray, data_set: ndarray, labels: list, k: int):
+
+def classify0(inx: ndarray, data_set: ndarray, labels: List[T], k: int)-> T:
     """
     [data0, data1, ...]
     与
@@ -88,6 +92,20 @@ def auto_norm(set_data)-> Tuple[ndarray, float, float]:
     return set_norm, ranges, min_value
 
 
+def set_value(a_dict: dict, a_key, a_value)-> None:
+    """
+    当key尚未存在时,添加data到dictionary中
+    @param a_dict:
+    @param a_key:
+    @param a_value:
+    @return:
+    """
+    if a_key not in a_dict:
+        a_dict[a_key] = a_value
+    return
+
+
+# region Dating Test Functions
 def file_to_matrix(a_filename: str)-> Tuple[ndarray, list, dict, List[str]]:
     """
     将一个特定格式文件转化为matrix
@@ -124,42 +142,7 @@ def file_to_matrix(a_filename: str)-> Tuple[ndarray, list, dict, List[str]]:
     return ret_mat, vt_label, ret_descs, ["飞行常客里程数", "玩视屏游戏消耗时间", "每周消费冰淇淋公升数"]
 
 
-def set_value(a_dict: dict, a_key, a_value):
-    """
-    当key尚未存在时,添加data到dictionary中
-    @param a_dict:
-    @param a_key:
-    @param a_value:
-    @return:
-    """
-    if a_key not in a_dict:
-        a_dict[a_key] = a_value
-    return
-
-
-def extract_zip(a_target_dir):
-    """
-    解压digits.zip到a_path中
-    @param a_target_dir:
-    """
-    z = zipfile.ZipFile("digits.zip", "r")
-    name_list = z.namelist()
-    for n in name_list:
-        str_name = str(n)
-        path = "{0}/{1}".format(a_target_dir, str_name)
-        if str_name[-1] == '/':
-            if not os.path.exists(path):
-                os.mkdir(path)
-        else:
-            if not os.path.exists(path):
-                bytes = z.read(str_name)
-                f = open(path, 'wb')
-                f.write(bytes)
-                f.close()
-            image_to_vector(path)
-
-
-def dating_class_test():
+def dating_class_test()-> None:
     """
     测试文件datingTestSet.txt中的数据
     拿文件中10%的数据作为待测数据
@@ -181,59 +164,15 @@ def dating_class_test():
     print("The total error rate is: %f", error_count/float(num_test_vecs))
 
 
-def number_recognize():
-    os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
-    extract_zip("c:/")
-    traning_folder = "c:/trainingDigits"
-    filenames =  os.listdir(traning_folder)
-    traning_matrix = zeros((len(filenames), 32*32))
-    traning_labels = []
-    for i in range(0, len(filenames)):
-        filename = filenames[i]
-        label = filename[0] # 文件名形如 4_129.txt 表示字符"4"的第129个样本
-        vt = image_to_vector("{0}/{1}".format(traning_folder, filename))
-        traning_matrix[ i,: ] = vt
-        traning_labels.append(label)
-    test_folder = "c:/testDigits"
-    filenames = os.listdir(test_folder)
-    error_count = 0
-    for i in range(0, len(filenames)):
-        filename = filenames[i]
-        label_expected = filename[0] # 文件名形如 4_129.txt 表示字符"4"的第129个测试样本
-        vt = image_to_vector("{0}/{1}".format(traning_folder, filename))
-        label_calculate = classify0(vt, traning_matrix, traning_labels, 3)
-        if label_expected != label_calculate:
-            print("{0}被错认为是{1}".format(filename, label_calculate))
-            error_count += 1
-    print("Error count", error_count)
-    print("错误率:{0}%".format(round(error_count*100/len(filenames), 2)))
-
-
-def image_to_vector(a_file_path):
+def run_draw_dating():
     """
-    必须是32*32的图片
-    @param a_file_path:
+    快速运行函数
+    绘画数据图
     @return:
     """
-    f = open(a_file_path, 'r')
-    lines = f.readlines()
-    if len(lines) != 32:
-        print("高度不合法的文件:", a_file_path)
-        return
-    vt = zeros((1, 32*32))
-    for i in range(0, len(lines)):
-        line = list(lines[i])[:32]
-        if len(line) != 32:
-            print("宽度({0})不合法的文件:{1}".format(len(line), a_file_path))
-            return
-        for j in range(0, 32):
-            vt[0, i*32 + j] = line[j]
-    return vt
-
-
-# 快速运行函数
-# 绘画数据图
-def run_draw_dating():
+    """
+    @return:
+    """
     import os
     os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
     a, label_numbers, dt_desc, columns = file_to_matrix("datingTestSet.txt")
@@ -262,6 +201,100 @@ def run_draw_dating():
     plt.xlabel(columns[xi], fontproperties=font)
     plt.ylabel(columns[yi], fontproperties=font)
     plt.show()
+# endregion
+
+
+# region Number Recognize Functions
+def extract_zip(a_target_dir: str)-> None:
+    """
+    解压digits.zip到a_path中
+    @param a_target_dir:
+    """
+    z = zipfile.ZipFile("digits.zip", "r")
+    name_list = z.namelist()
+    for n in name_list:
+        str_name = str(n)
+        path = "{0}/{1}".format(a_target_dir, str_name)
+        if str_name[-1] == '/':
+            if not os.path.exists(path):
+                os.mkdir(path)
+        else:
+            if not os.path.exists(path):
+                bytes = z.read(str_name)
+                f = open(path, 'wb')
+                f.write(bytes)
+                f.close()
+            image_to_vector(path)
+
+
+def image_to_vector(a_file_path)-> ndarray:
+    """
+    必须是32*32的图片
+    @param a_file_path:
+    @return:
+    """
+    f = open(a_file_path, 'r')
+    lines = f.readlines()
+    if len(lines) != 32:
+        print("高度不合法的文件:", a_file_path)
+        return
+    vt = zeros((1, 32*32))
+    for i in range(0, len(lines)):
+        line = list(lines[i])[:32]
+        if len(line) != 32:
+            print("宽度({0})不合法的文件:{1}".format(len(line), a_file_path))
+            return
+        for j in range(0, 32):
+            vt[0, i*32 + j] = line[j]
+    return vt
+
+
+def number_recognize(a_txt_path: str, a_k: int=3)-> None:
+    os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
+    extract_zip("c:/")
+    traning_folder = "c:/trainingDigits"
+    filenames = os.listdir(traning_folder)
+    traning_matrix = zeros((len(filenames), 32*32))
+    traning_labels = []
+    for i in range(0, len(filenames)):
+        filename = filenames[i]
+        label = filename[0] # 文件名形如 4_129.txt 表示字符"4"的第129个样本
+        vt = image_to_vector("{0}/{1}".format(traning_folder, filename))
+        traning_matrix[ i,: ] = vt
+        traning_labels.append(label)
+    filename = a_txt_path
+    vt = image_to_vector(filename)
+    label_calculate = classify0(vt, traning_matrix, traning_labels, a_k)
+    print("文件{0}是:{1}".format(a_txt_path, label_calculate))
+
+
+def numbers_recognize():
+    os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
+    extract_zip("c:/")
+    traning_folder = "c:/trainingDigits"
+    filenames =  os.listdir(traning_folder)
+    traning_matrix = zeros((len(filenames), 32*32))
+    traning_labels = []
+    for i in range(0, len(filenames)):
+        filename = filenames[i]
+        label = filename[0] # 文件名形如 4_129.txt 表示字符"4"的第129个样本
+        vt = image_to_vector("{0}/{1}".format(traning_folder, filename))
+        traning_matrix[ i,: ] = vt
+        traning_labels.append(label)
+    test_folder = "c:/testDigits"
+    filenames = os.listdir(test_folder)
+    error_count = 0
+    for i in range(0, len(filenames)):
+        filename = filenames[i]
+        label_expected = filename[0] # 文件名形如 4_129.txt 表示字符"4"的第129个测试样本
+        vt = image_to_vector("{0}/{1}".format(traning_folder, filename))
+        label_calculate = classify0(vt, traning_matrix, traning_labels, 3)
+        if label_expected != label_calculate:
+            print("{0}被错认为是{1}".format(filename, label_calculate))
+            error_count += 1
+    print("Error count", error_count)
+    print("错误率:{0}%".format(round(error_count*100/len(filenames), 2)))
+# endregion
 
 
 # region Obsolete functions
@@ -273,6 +306,6 @@ def create_data_set():
 
 
 if __name__ == '__main__':
-    run_draw_dating()
-
+    # run_draw_dating()
+    number_recognize("MyNumbers/2.txt", 3)
 
