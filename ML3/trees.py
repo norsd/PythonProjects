@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from math import log
 from typing import Tuple
 from typing import List
+from typing import Dict
 from typing import TypeVar
 import os
 import operator
@@ -13,6 +14,9 @@ font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), si
 
 
 __author__ = 'norsd@163.com'
+
+
+os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML3')
 
 
 def calculate_shannon_ent(a_data_set):
@@ -30,6 +34,19 @@ def calculate_shannon_ent(a_data_set):
     return shannon_ent
 
 
+def create_data_set()-> Tuple[List[Tuple[int, int, str]], List[str]]:
+    data_set = [
+        [1, 1, 'yes'],
+        [1, 1, 'yes'],
+        [1, 0, 'no'],
+        [0, 1, 'no'],
+        [0, 1, 'no'],
+        [1, 1, 'maybe']
+    ]
+    labels = ['no surfacing', 'flippers']
+    return data_set, labels
+
+
 def split_set(a_data_set, a_axis, a_value):
     ret_data_set = []
     for feat_vec in a_data_set:
@@ -41,9 +58,10 @@ def split_set(a_data_set, a_axis, a_value):
 
 
 def choose_best_feature_to_split(a_data_set: List):
-    num_features = len(a_data_set[0]) -1
+    num_features = len(a_data_set[0]) - 1
     base_entropy = calculate_shannon_ent(a_data_set)
-    best_info_gain = 0.0; best_feature = -1
+    best_info_gain = 0.0
+    best_feature = -1
     for i in range(num_features):
         feat_list = [example[i] for example in a_data_set]
         unique_vals = set(feat_list)
@@ -82,17 +100,33 @@ def create_tree(a_data_set, a_labels):
     feat_values = [example[best_feat] for example in a_data_set]
     unique_vals = set(feat_values)
     for value in unique_vals:
-        sub_labels = labels[:]
+        sub_labels = a_labels[:]
         my_tree[best_feat_label][value] = create_tree(split_set(a_data_set, best_feat, value), sub_labels)
     return my_tree
 
-def test_create_set():
-    data_set = [
-        [1, 1, 'yes'],
-        [1, 1, 'yes'],
-        [1, 0, 'no'],
-        [0, 1, 'no'],
-        [0, 1, 'no'],
-        [1, 1, 'maybe']
-    ]
-    return data_set
+
+def classify(inputTree:Dict[str, Dict], featLabels:list, testVec):
+    firstStr = next(iter(inputTree)) #inputTree.keys()[0]
+    secondDict = inputTree[firstStr]
+    featIndex = featLabels.index(firstStr)
+    for key in secondDict.keys():
+        if testVec[featIndex] == key:
+            if type(secondDict[key]) == dict:
+                classLabel = classify(secondDict[key], featLabels, testVec)
+            else:
+                classLabel = secondDict[key]
+    return classLabel
+
+
+def storeTree(inputTree, filename):
+    import pickle
+    fw = open(filename, 'wb')
+    pickle.dump(inputTree, fw)
+    fw.close()
+
+
+def grabTree(filename):
+    import pickle
+    fr = open(filename, 'rb')
+    return pickle.load(fr)
+
