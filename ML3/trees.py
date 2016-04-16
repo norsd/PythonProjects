@@ -41,7 +41,6 @@ def create_data_set()-> Tuple[List[Tuple[int, int, str]], List[str]]:
         [1, 0, 'no'],
         [0, 1, 'no'],
         [0, 1, 'no'],
-        [1, 1, 'maybe']
     ]
     labels = ['no surfacing', 'flippers']
     return data_set, labels

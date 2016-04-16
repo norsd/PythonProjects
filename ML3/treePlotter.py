@@ -9,6 +9,7 @@ from typing import TypeVar
 import os
 import operator
 __author__ = 'norsd@163.com'
+
 # 为matplotlib显示中文
 font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), size=14)
 
