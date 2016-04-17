@@ -38,7 +38,13 @@ def calculate_shannon_entropy(a_data_set: List[Tuple[int, int, str]]):
     return sum_entropy
 
 
-def split_data_set(a_data_set: List[Tuple], a_property_index: int, a_value: int):
+def remove_tuple_item(a_tuple: Tuple, a_index: int):
+    vt = list(a_tuple)
+    vt.pop(a_index)
+    return tuple(vt)
+
+
+def split_data_set(a_data_set: List[Tuple], a_property_index: int, a_property_value: int):
     """
     创建新的数据集
     从原数据集中剔除第i个属性, 且其此属性的值为 a_value
@@ -46,7 +52,7 @@ def split_data_set(a_data_set: List[Tuple], a_property_index: int, a_value: int)
         原数据集,不做修改
     @param a_property_index:
         属性的序列号
-    @param a_value:
+    @param a_property_value:
         属性的值
     @return:
         [[1, 1, yes], [1, 1, yes], [1, 0, no], [0, 1, no], [0, 0, no]]
@@ -54,13 +60,31 @@ def split_data_set(a_data_set: List[Tuple], a_property_index: int, a_value: int)
         [[1, yes], [1, yes], [0, no]]
     """
     vt = []
-    for item in a_data_set:
-        axis_value = item[a_property_index]
-        if axis_value == a_value:
-            fore = item[:a_property_index]
-            fore.extend(item[a_property_index + 1:])
-            vt.append(fore)
+    for t in a_data_set:
+        value = t[a_property_index]
+        if value == a_property_value:
+            list_t = list(t)
+            list_t.pop(a_property_index)
+            vt.append(tuple(list_t))
     return vt
+
+
+def split_data_set_to_dict(a_data_set: List[Tuple], a_property_index: int):
+    """
+    根据index个属性值返回dict<one_property_value, splitted_data_set>
+    每一个key是第index个Property的一种可能值
+    每一个value是第index个Property为key值时的 splitted_data_set
+    @param a_data_set:
+    @param a_property_index:
+    @return:
+    """
+    dt = {}
+    property_value = get_property_values(a_data_set, a_property_index)
+    for v in property_value:
+        dt[v] = []
+    for t in a_data_set:
+        dt[t[a_property_index]].append(remove_tuple_item(t, a_property_index))
+    return dt
 
 
 def get_property_count(a_data_set: List[Tuple]) -> int:
@@ -99,11 +123,63 @@ def choose_best_feather_split(a_data_set: List[Tuple]) ->int:
             sub_data_set = split_data_set(a_data_set, i, current_split_value)
             sub_entropy = calculate_shannon_entropy(sub_data_set)
             entropy += len(sub_data_set)/double(len(a_data_set))*sub_entropy
-        print(entropy)
         if base_entropy - entropy > entropy_gain:
             entropy_gain = base_entropy - entropy
             best_entropy_index = i
     return best_entropy_index
+
+
+def create_decision_tree(a_data_set: List[Tuple], a_property_names: Tuple):
+    """
+    @param a_data_set:
+    @param a_property_names:
+    @return:
+    {"Fat":
+        {
+            {"yes" : "不受欢迎"},
+            {"no"  :
+                {
+                    {"有钱" : "还收点欢迎"},
+                    {"没钱" : "不受欢迎"}
+                }
+            }
+        }
+    },
+    {"Cool": "受欢迎"}
+    """
+    if len(a_data_set) == 1:
+        t = a_data_set[0]
+        assert len(a_property_names) == 1, "fuck"
+        p = a_property_names[0]
+        return dict([p, t[-1]])
+    elif len(a_property_names) == 0:
+        raise "logical error"
+    else:
+        bi = choose_best_feather_split(a_data_set)
+        best_property_name = a_property_names[bi]
+        dt = split_data_set_to_dict(a_data_set, bi)
+        # pv: Property Value, vt: splitted_data_set
+        for (pv, vt) in dt.items():
+            # 计算vt中的分类有多少个
+            ls = set([t[-1] for t in vt])
+            if len(ls) == 1:
+                # vt中的分类个数为1, 说明这个分支分类完成
+                dt[pv] = tuple(ls)[0]
+            elif len(a_property_names) == 1:
+                dt_value = {}
+                total = 0
+                label_combo = ""
+                for t in vt:
+                    dt_value[t[-1]] = dt_value.get(t[-1], 0) + 1
+                    total += 1
+                for (k, v) in dt_value.items():
+                    label = "%s(%f) " % (k, v/float(total))
+                    label_combo += label
+                dt[pv] = {a_property_names[0]: label_combo}
+            else:
+                dt[pv] = create_decision_tree(vt, remove_tuple_item(a_property_names, bi))
+        return {best_property_name: dt}
+
 
 
 

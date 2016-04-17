@@ -34,18 +34,6 @@ def calculate_shannon_ent(a_data_set):
     return shannon_ent
 
 
-def create_data_set()-> Tuple[List[Tuple[int, int, str]], List[str]]:
-    data_set = [
-        [1, 1, 'yes'],
-        [1, 1, 'yes'],
-        [1, 0, 'no'],
-        [0, 1, 'no'],
-        [0, 1, 'no'],
-    ]
-    labels = ['no surfacing', 'flippers']
-    return data_set, labels
-
-
 def split_set(a_data_set, a_axis, a_value):
     ret_data_set = []
     for feat_vec in a_data_set:
