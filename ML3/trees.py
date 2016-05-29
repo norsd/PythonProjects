@@ -14,8 +14,6 @@ font = FontProperties(fname=os.path.expandvars(r"%windir%\fonts\simsun.ttc"), si
 
 __author__ = 'norsd@163.com'
 
-os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML3')
-
 
 def storeTree(inputTree, filename):
     import pickle

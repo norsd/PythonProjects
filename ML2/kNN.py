@@ -17,7 +17,6 @@ __author__ = 'norsd@163.com'
 # 定义泛型
 T = TypeVar('T')
 
-
 def classify0(inx: ndarray, data_set: ndarray, labels: List[T], k: int)-> T:
     """
     [data0, data1, ...]
@@ -158,10 +157,11 @@ def dating_class_test()-> None:
     error_count = 0.0
     for i in range(num_test_vecs):
         classifier_result = classify0(mat_norm[i, :], mat_norm[num_test_vecs:m, :], vt_labels[num_test_vecs:m], 3)
-        print("the classifier came back with: %d, the reaql answer is: %d", classifier_result, vt_labels[i])
-        if classifier_result != vt_labels[i] :
+        if classifier_result != vt_labels[i]:
             error_count += 1.0
-    print("The total error rate is: %f", error_count/float(num_test_vecs))
+            # print("the classifier came back with: {0}, the real answer is: {1}".format(classifier_result, vt_labels[i]))
+    print("Total:{0}, Error Count:{1}".format(num_test_vecs, error_count))
+    print("The total error rate is: {0}%".format(error_count/float(num_test_vecs)*100))
 
 
 def run_draw_dating():
@@ -173,9 +173,11 @@ def run_draw_dating():
     """
     @return:
     """
-    import os
-    os.chdir('C:\\GitHubRepositories\\PythonProjects\\ML2')
-    a, label_numbers, dt_desc, columns = file_to_matrix("datingTestSet.txt")
+    # 定位datingTestSet.txt的目录
+    script_path = os.path.realpath(__file__)
+    script_dir = os.path.dirname(script_path)
+    datingTestSet_txt_path = script_dir + "\\datingTestSet.txt"
+    a, label_numbers, dt_desc, columns = file_to_matrix(datingTestSet_txt_path)
     norm = auto_norm(a)
     print(norm)
     import matplotlib
@@ -304,8 +306,4 @@ def create_data_set():
     return group, labels
 # endregion
 
-
-if __name__ == '__main__':
-    # run_draw_dating()
-    number_recognize("MyNumbers/2.txt", 3)
 
